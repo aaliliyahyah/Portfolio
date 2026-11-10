@@ -106,6 +106,22 @@
       </div>
     </section>
 
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="site-width contact-layout">
+        <div class="contact-copy"><p class="eyebrow">Good things start with a hello</p><h2 id="contact-heading">Have an idea?<br>Let’s make<br>something<span class="text-berry">.</span></h2><p>A project, an opportunity, or just a friendly hello — I’d love to hear from you.</p><div class="contact-address"><span aria-hidden="true">✉</span><span>[Your email address]<small>Replace with your preferred contact email.</small></span></div><span class="hand-note contact-note">my inbox could use a little sunshine ☼</span></div>
+        <!-- Set data-recipient to your real email address to enable email drafts. -->
+        <form id="contact-form" class="contact-form" data-recipient="" aria-describedby="form-description">
+          <div class="form-top"><span aria-hidden="true">♡</span> A little note to say hello</div>
+          <div class="form-fields"><p id="form-description">This form opens an email draft. You’ll finish sending it in your email app.</p>
+          <div class="grid sm:grid-cols-2 gap-5"><div><label for="name">Your name <span aria-hidden="true">*</span></label><input id="name" name="name" autocomplete="name" placeholder="What should I call you?" required maxlength="100"></div><div><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></div></div>
+          <div><label for="subject">What’s on your mind? <span aria-hidden="true">*</span></label><input id="subject" name="subject" placeholder="A project, an opportunity, a hello…" required maxlength="200"></div>
+          <div><label for="message">Your message <span aria-hidden="true">*</span></label><textarea id="message" name="message" rows="4" placeholder="Tell me a little about it…" required maxlength="5000"></textarea></div>
+          <p id="form-status" class="form-status" role="status" aria-live="polite">Template preview: add your recipient email to enable email drafts.</p>
+          <noscript><p class="form-status">Enable JavaScript to prepare an email draft. This static form does not send messages.</p></noscript>
+          <button id="contact-submit" class="button button-primary w-full" type="submit" disabled>Prepare email draft <span aria-hidden="true">↗</span></button><p class="form-footnote">A little conversation could be the start of something lovely.</p></div>
+        </form>
+      </div>
+    </section>
   </main>
   <footer class="site-footer site-width"><div class="footer-main"><a class="wordmark" href="#home"><span class="logo-flower" aria-hidden="true">✻</span> yourname<span class="text-berry">.dev</span></a><p>Built with intention, Tailwind, and a little <span aria-label="love">♡</span>.</p><a class="back-top" href="#home">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>© <span id="year">2026</span> [Your Name]. Keep creating.</p><p>Design inspiration: <a href="https://jooeunlee.com/" target="_blank" rel="noopener noreferrer">Jooeun Lee<span class="sr-only"> (opens in a new tab)</span></a> & <a href="https://sskd.tech/" target="_blank" rel="noopener noreferrer">sskd.tech<span class="sr-only"> (opens in a new tab)</span></a></p></div></footer>
 </body>
