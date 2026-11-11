@@ -1,0 +1,83 @@
+/* Custom cursor */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor:
+      url('./heart-cursor.svg') 1 1,
+      auto;
+  }
+  a,
+  button:not(:disabled),
+  [role='button'],
+  summary,
+  .toolkit-card {
+    cursor:
+      url('./heart-cursor.svg') 1 1,
+      pointer;
+  }
+}
+
+/* Theme tokens */
+@theme {
+  --color-paper: #fff9fc;
+  --color-blush: #fadde6;
+  --color-lavender: #e7defa;
+  --color-mint: #ddf2e5;
+  --color-ink: #382c40;
+  --color-berry: #994864;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+}
+
+/* Base element styles and accessibility */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height, 65px);
+  }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+  }
+  h2 {
+    font-size: clamp(2rem, 3.4vw, 2.85rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+  }
+  h3 {
+    font-weight: 700;
+  }
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  [tabindex] {
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 3px solid #7962a8;
+    outline-offset: 5px;
+  }
+  ::selection {
+    background: #e7defa;
+    color: #382c40;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}

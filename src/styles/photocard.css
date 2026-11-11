@@ -1,0 +1,305 @@
+/* Portrait, social links, and photocard */
+.header-flower {
+  width: 100%;
+  height: 100%;
+  transition: transform 350ms var(--ease-enter);
+}
+.header-home:hover .header-flower,
+.header-home:focus-visible .header-flower {
+  transform: rotate(25deg);
+}
+.cover-portrait {
+  background: transparent;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  height: 83%;
+  bottom: 0;
+}
+.cover-intro {
+  width: auto;
+}
+.hero-socials {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.social-placeholder {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-berry);
+}
+.social-placeholder svg {
+  width: 28px;
+  height: 28px;
+}
+.social-placeholder small {
+  font-size: 10px;
+}
+.social-monogram {
+  font: 800 25px/28px sans-serif;
+}
+.about-photo img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+/* The portrait stays visible when JavaScript is unavailable. */
+.about-photo {
+  padding: 0;
+  background: transparent;
+}
+.photocard {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-berry);
+  perspective: 1000px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.photocard:disabled {
+  cursor: default;
+}
+.photocard:focus:not(:focus-visible) {
+  outline: none;
+}
+.photocard:focus-visible {
+  outline: 2px dashed #a59bb4;
+  outline-offset: 5px;
+}
+.photocard-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.photocard-cover,
+.photocard-photo {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  background: #fbe0e9;
+  box-shadow:
+    0 5px 16px #382c401a,
+    0 1px 3px #382c4014;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.photocard-photo {
+  padding-bottom: calc(20% + 10px);
+}
+.photocard-cover {
+  display: none;
+  border: 1px solid #a57da94d;
+  overflow: hidden;
+}
+.photocard-cover::before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #b76b8b4d;
+  pointer-events: none;
+}
+.photocard-cover::after {
+  content: '';
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  width: 112px;
+  height: 84px;
+  background: url('./cherry-blossom-cluster.svg') center / contain no-repeat;
+  transform: rotate(16deg);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.photocard-medallion {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 136px;
+  border: 1px solid #c783a059;
+  border-radius: 50%;
+  background: #fff9fcb3;
+  outline: 3px solid #fff9fc66;
+  outline-offset: 4px;
+  transform: rotate(6deg);
+}
+.photocard-petal {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  border-radius: 80% 15% 75% 25%;
+  background: #eaa9c4;
+  box-shadow: inset 2px 0 #fff3f866;
+}
+.petal-one {
+  left: 25px;
+  bottom: 66px;
+  transform: rotate(-35deg);
+}
+.petal-two {
+  left: 43px;
+  bottom: 45px;
+  transform: rotate(35deg) scale(0.7);
+}
+.petal-three {
+  right: 28px;
+  top: 96px;
+  transform: rotate(65deg) scale(0.8);
+}
+.photocard-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photocard-ready .photocard-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-image: radial-gradient(circle, #a57da940 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.photocard-cover .photocard-flower {
+  width: 84px;
+  height: 84px;
+}
+.photocard-caption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 16.6667%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #796775;
+  font: italic 13px var(--font-display);
+  letter-spacing: 0.02em;
+}
+.photocard-ready .photocard-photo {
+  transform: rotateY(180deg);
+}
+.photocard-ready[aria-pressed='true'] .photocard-inner {
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .photocard-inner {
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+.contact-copy h2 {
+  font-size: clamp(3.25rem, 7.5vw, 6.5rem);
+}
+.toolkit-card {
+  transition:
+    transform 250ms var(--ease-enter),
+    border-color 250ms,
+    background-color 250ms,
+    box-shadow 250ms;
+}
+
+@media (max-width: 700px) {
+  .cover-portrait {
+    height: auto;
+    width: min(75%, 320px);
+  }
+  .cover-intro {
+    width: 100%;
+  }
+  .cover-facts {
+    margin-top: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-flower,
+  .toolkit-card {
+    transform: none !important;
+    translate: none !important;
+    transition: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .contact-layout {
+    gap: 45px;
+  }
+}
+@media (max-width: 767px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+.section-heading {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+}
+/* A pressed-paper interaction replaces 3D tilt: inset frame, icon pop, and a light sweep. */
+.toolkit-card {
+  transition:
+    border-color 200ms,
+    background-color 200ms,
+    box-shadow 200ms;
+}
+.toolkit-card::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--color-berry);
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms;
+}
+.toolkit-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, #ffffff65 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.toolkit-card:focus-visible::after {
+  opacity: 0.4;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .toolkit-card:focus-visible .toolkit-icon {
+    transform: scale(1.18);
+  }
+  .toolkit-card:focus-visible .toolkit-watermark {
+    transform: translate(-6px, -6px) rotate(-8deg);
+  }
+  .toolkit-card:focus-visible::before {
+    animation: card-sweep 650ms var(--ease-enter);
+  }
+  @keyframes card-sweep {
+    to {
+      transform: translateX(120%);
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .toolkit-card:hover::after {
+    opacity: 0.4;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .toolkit-card:hover .toolkit-icon {
+    transform: scale(1.18);
+  }
+  .toolkit-card:hover .toolkit-watermark {
+    transform: translate(-6px, -6px) rotate(-8deg);
+  }
+  .toolkit-card:hover::before {
+    animation: card-sweep 650ms var(--ease-enter);
+  }
+}

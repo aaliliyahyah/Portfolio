@@ -1,0 +1,139 @@
+/* Light floral details sit behind content and never intercept interaction. */
+.section {
+  position: relative;
+  isolation: isolate;
+}
+.section-heading h2,
+.contact-copy h2 {
+  font-size: clamp(3.5rem, 8.5vw, 7.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+  overflow-wrap: anywhere;
+}
+.toolkit-card {
+  transition:
+    transform 280ms var(--ease-enter),
+    border-color 200ms,
+    background-color 200ms,
+    box-shadow 250ms;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .toolkit-card:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px #99486420;
+    z-index: 2;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .toolkit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px #99486420;
+    z-index: 2;
+  }
+  .toolkit-card:nth-child(even):hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 960px) {
+  html {
+    --header-height: 57px;
+  }
+}
+
+/* Original hero action placement. */
+.cover-intro {
+  display: block;
+  width: auto;
+  max-width: 300px;
+}
+.hero-socials {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.social-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-berry);
+}
+.social-placeholder svg {
+  width: 28px;
+  height: 28px;
+}
+.social-monogram {
+  font: 800 25px/28px sans-serif;
+}
+.cover-intro .hero-project-link {
+  display: inline-block;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--color-berry);
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  .cover-intro {
+    width: 100%;
+  }
+  .cover-intro .hero-project-link {
+    margin-top: 12px;
+  }
+}
+
+/* Reference-inspired dot grid and a local, pointer-lit dot layer. */
+body,
+.hero-backdrop,
+.section,
+.header-menu {
+  background-image: radial-gradient(circle, #99486429 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.hero-backdrop {
+  position: relative;
+  isolation: isolate;
+}
+.background-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background-image: radial-gradient(circle, #994864 1px, transparent 1px);
+  background-size: 20px 20px;
+  -webkit-mask-image: radial-gradient(
+    circle 300px at var(--spot-x, -999px) var(--spot-y, -999px),
+    #000b,
+    transparent
+  );
+  mask-image: radial-gradient(
+    circle 300px at var(--spot-x, -999px) var(--spot-y, -999px),
+    #000b,
+    transparent
+  );
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .background-spotlight.is-active {
+    opacity: 1;
+  }
+}
+
+/* Social links retain the icon-only hero layout. */
+.cover-intro .hero-socials a {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+}
+.contact-address {
+  min-width: 0;
+}
+.contact-address > span:last-child {
+  min-width: 0;
+}
+.contact-address a {
+  overflow-wrap: anywhere;
+}

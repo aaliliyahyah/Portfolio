@@ -1,0 +1,222 @@
+/* Toolkit cards inspired by jooeunlee.com, using this portfolio's own colors. */
+.toolkit-motion-note {
+  font-size: 11px;
+  color: #716371;
+  margin-bottom: 24px;
+}
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.toolkit-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid #99486440;
+  border-radius: 6px;
+  background: #fff9fc90;
+  transition:
+    border-color 250ms,
+    background-color 250ms,
+    box-shadow 250ms;
+}
+.toolkit-card:nth-child(3n + 2) {
+  background: #fadde690;
+}
+.toolkit-card:nth-child(3n) {
+  background: #ddf2e590;
+}
+.toolkit-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+}
+.toolkit-card h3 {
+  font-family: ui-monospace, monospace;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+}
+.toolkit-icon {
+  font-family: ui-monospace, monospace;
+  font-size: 25px;
+  line-height: 1;
+  color: var(--color-berry);
+  transition: transform 350ms var(--ease-enter);
+}
+.toolkit-card > p {
+  position: relative;
+  font-size: 13px;
+  color: #716371;
+  margin-bottom: 24px;
+  max-width: 32ch;
+}
+.toolkit-watermark {
+  position: absolute;
+  right: -8px;
+  bottom: -20px;
+  font:
+    800 130px/1 ui-monospace,
+    monospace;
+  color: var(--color-berry);
+  opacity: 0.16;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(-15deg);
+  transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.toolkit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  margin-bottom: 22px;
+}
+.toolkit-tags li {
+  padding: 5px 9px;
+  border: 1px solid #99486470;
+  border-radius: 5px;
+  font:
+    600 12px/1.5 ui-monospace,
+    monospace;
+  color: var(--color-berry);
+  background: var(--color-paper);
+}
+.toolkit-meter {
+  height: 5px;
+  width: 100%;
+  background: #99486415;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.toolkit-meter span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(to right, var(--color-berry) 0 16px, transparent 16px 21px);
+  transform-origin: left;
+  transition: transform 450ms var(--ease-enter);
+}
+.toolkit-card:focus-visible {
+  border-color: var(--color-berry);
+  background: var(--color-paper);
+  box-shadow: 0 8px 24px #99486412;
+}
+.toolkit-terminal {
+  margin-top: 30px;
+  padding: 30px;
+  border: 1px solid var(--color-berry);
+  border-radius: 6px;
+}
+.toolkit-terminal h3 {
+  font:
+    600 18px/1.4 ui-monospace,
+    monospace;
+  color: var(--color-berry);
+  margin-bottom: 22px;
+}
+.toolkit-terminal h3 span {
+  margin-right: 8px;
+}
+.toolkit-console {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 1px solid #79617a;
+  border-radius: 5px;
+  padding: 24px 30px;
+  font:
+    13px/2 ui-monospace,
+    monospace;
+}
+.toolkit-console ul {
+  margin-block: 14px;
+}
+.toolkit-console li {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.toolkit-console b {
+  font-weight: 500;
+  color: var(--color-blush);
+  min-width: 75px;
+}
+.console-prompt {
+  color: var(--color-blush);
+}
+.console-ok {
+  color: var(--color-mint);
+}
+.console-cursor {
+  color: var(--color-lavender);
+}
+@media (hover: hover) and (pointer: fine) {
+  .toolkit-card:hover {
+    border-color: var(--color-berry);
+    background: var(--color-paper);
+    box-shadow: 0 8px 24px #99486412;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .toolkit-terminal.is-in-view .console-cursor {
+    animation: console-blink 1.2s step-end 4;
+  }
+  .toolkit-grid.is-in-view .toolkit-meter span {
+    animation: toolkit-load 700ms var(--card-delay) var(--ease-enter) both;
+  }
+  @keyframes toolkit-load {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes console-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .toolkit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .toolkit-card,
+  .toolkit-terminal {
+    padding: 24px;
+  }
+  .toolkit-console {
+    padding: 18px;
+    font-size: 11px;
+  }
+  .toolkit-console li {
+    gap: 8px;
+  }
+  .toolkit-console b {
+    min-width: 60px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toolkit-watermark,
+  .toolkit-icon,
+  .toolkit-meter span {
+    transform: none !important;
+    transition: none;
+  }
+}

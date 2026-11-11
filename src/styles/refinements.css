@@ -1,0 +1,220 @@
+/* A little stationery-inspired frame for the portfolio navigation. */
+.site-header {
+  background: #fff9fc66;
+  border-bottom: 1px solid #ffffff60;
+  box-shadow: 0 4px 20px #99486406;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.header-inner {
+  min-height: 80px;
+}
+.header-home {
+  width: auto;
+  height: auto;
+  gap: 11px;
+  text-decoration: none;
+}
+.header-home .header-flower {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.header-wordmark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+.header-wordmark > span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #795c73;
+}
+#main-nav {
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #e9d4df;
+  border-radius: 999px;
+  background: #f8edf366;
+}
+#main-nav a {
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  transition:
+    background-color 180ms,
+    color 180ms,
+    box-shadow 180ms;
+}
+#main-nav a[aria-current],
+#main-nav a:focus-visible {
+  background: var(--color-paper);
+  color: var(--color-berry);
+  box-shadow: 0 2px 6px #99486414;
+}
+#main-nav a.nav-hello {
+  margin-left: 5px;
+  background: var(--color-berry);
+  color: var(--color-paper);
+  box-shadow: 0 2px 0 #71364b;
+}
+.nav-hello > span {
+  display: inline-block;
+  margin-left: 6px;
+}
+.menu-toggle,
+.menu-close {
+  background: var(--color-paper);
+  border: 1px solid #dcbfce;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 12px;
+}
+.menu-toggle-icon {
+  display: grid;
+  gap: 4px;
+  width: 15px;
+}
+.menu-toggle-icon i {
+  display: block;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.menu-toggle-icon i:last-child {
+  width: 10px;
+}
+.mobile-links a {
+  border-radius: 12px;
+  padding-inline: 14px;
+  text-decoration: none;
+}
+.mobile-links a[aria-current] {
+  background: #fff9fc9e;
+}
+.mobile-links .nav-hello {
+  color: var(--color-berry);
+}
+.mobile-links .nav-hello > span {
+  display: none;
+}
+@media (hover: hover) {
+  #main-nav a:hover {
+    background: #eedeeb;
+    color: var(--color-berry);
+  }
+  #main-nav a.nav-hello:hover {
+    background: #7d3952;
+    color: var(--color-paper);
+  }
+  .mobile-links a:hover {
+    background: #fff9fc9e;
+  }
+}
+@media (max-width: 960px) {
+  .header-inner {
+    min-height: 70px;
+    gap: 12px;
+  }
+  .header-home .header-flower {
+    width: 34px;
+    height: 34px;
+  }
+  .header-wordmark {
+    font-size: 22px;
+  }
+  #main-nav {
+    border-radius: 18px;
+  }
+  #main-nav a {
+    padding: 8px 10px;
+  }
+  .menu-toggle:focus-visible,
+  .menu-close:focus-visible {
+    background: var(--color-berry);
+    color: var(--color-paper);
+  }
+}
+
+/* Goals occupy the viewport beneath the fixed navigation. */
+#learning-goals {
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height, 80px));
+  min-height: calc(100dvh - var(--header-height, 80px));
+  display: flex;
+  align-items: center;
+}
+#learning-goals .learning-goals-layout {
+  width: 100%;
+  align-items: center;
+}
+
+/* Center the portrait in the gap between “creative” and “developer”. */
+@media (min-width: 701px) {
+  .cover-portrait {
+    left: 46%;
+  }
+}
+
+/* A personal introduction beside the hero portrait. */
+.cover-aside {
+  position: absolute;
+  z-index: 3;
+  right: 3.5vw;
+  bottom: 50px;
+  width: min(25%, 290px);
+  text-align: right;
+}
+.cover-aside-note {
+  margin-bottom: 32px;
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.2vw, 32px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+.cover-aside .cover-facts {
+  position: static;
+}
+@media (max-width: 700px) {
+  .cover-aside {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-top: auto;
+    text-align: left;
+  }
+  .cover-aside .cover-facts div {
+    justify-content: flex-start;
+  }
+  .cover-aside-note {
+    font-size: 26px;
+  }
+}
+
+/* Size the introduction heading to its text column. */
+.about-copy {
+  min-width: 0;
+  container-type: inline-size;
+}
+.about-copy h3 {
+  font-size: clamp(16px, 3.6cqi, 30px);
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .about-copy h3 {
+    font-size: 24px;
+    white-space: normal;
+    text-wrap: balance;
+  }
+}

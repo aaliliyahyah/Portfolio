@@ -1,0 +1,293 @@
+/* Learning goals */
+.learning-goals-list h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.learning-goals-list p {
+  color: #716371;
+  font-size: 14px;
+}
+.footer-main > p {
+  max-width: 430px;
+}
+.learning-goals-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(35px, 7vw, 90px);
+}
+.learning-goals-intro h2,
+.contact-copy h2 {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+}
+.learning-goals-intro > p:not(.eyebrow) {
+  max-width: 300px;
+  margin-top: 22px;
+  color: #716371;
+  font-size: 14px;
+}
+.learning-goals-flower {
+  display: inline-block;
+  width: 120px;
+  height: 90px;
+  margin-top: 24px;
+  transform: rotate(-10deg);
+}
+.learning-goals-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.learning-goals-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
+.learning-goals-list li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 52px;
+  bottom: -20px;
+  border-left: 1px dashed #d6c3d4;
+}
+.learning-goal-number {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #d9cae6;
+  border-radius: 50%;
+  background: var(--color-lavender);
+  font:
+    13px ui-monospace,
+    monospace;
+}
+.learning-goals-list li:nth-child(2) .learning-goal-number {
+  background: var(--color-blush);
+  border-color: #edc8d6;
+}
+.learning-goals-list li:nth-child(3) .learning-goal-number {
+  background: var(--color-mint);
+  border-color: #c3dfce;
+}
+.learning-goals-list .learning-goal-label {
+  font-size: 11px;
+  color: var(--color-berry);
+  margin-bottom: 6px;
+}
+.learning-goals-list h3 {
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .learning-goals-layout {
+    grid-template-columns: 1fr;
+  }
+  .learning-goals-flower {
+    display: none;
+  }
+}
+
+/* Personal introduction details and a readable contact invitation. */
+.interest-list {
+  font-size: 13px;
+  gap: 10px 18px;
+  margin-top: 24px;
+  line-height: 1.6;
+}
+.interest-list span {
+  font-size: 16px;
+}
+.contact-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+.contact-copy {
+  min-width: 0;
+}
+.contact-copy h2 {
+  overflow-wrap: normal;
+}
+.contact-form {
+  min-width: 0;
+  background: #fffcfe;
+  border: 1px solid #d9cbd5;
+  border-radius: 18px;
+  box-shadow: 0 12px 36px #99486412;
+}
+.form-top {
+  padding: 18px 28px;
+  background: #fff5f9;
+  border-radius: 18px 18px 0 0;
+}
+.form-fields {
+  padding: 26px 28px;
+}
+@media (max-width: 767px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form-top {
+    padding: 16px 20px;
+  }
+  .form-fields {
+    padding: 22px 20px;
+  }
+}
+
+/* Academic milestones: a clean paper card with distinct qualification hierarchy. */
+.education-panel {
+  background: #fffcfe;
+  border: 1px solid #e1d1dd;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px #9948640a;
+  overflow: hidden;
+}
+.education-title {
+  padding: 26px 30px;
+  background: #f0e8f8;
+  border-bottom: 1px solid #e1d1dd;
+  gap: 20px;
+}
+.education-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-berry);
+  margin-bottom: 5px;
+}
+.education-title h3 {
+  font-size: clamp(21px, 2.4vw, 28px);
+  letter-spacing: -0.035em;
+}
+.education-table {
+  min-width: 760px;
+  font-size: 14px;
+}
+.education-table th,
+.education-table td {
+  padding: 28px 30px;
+  vertical-align: middle;
+  min-width: 0;
+  border-bottom: 1px solid #eee2eb;
+}
+.education-table thead th {
+  padding-block: 14px;
+  background: #faf5f9;
+  font-size: 11px;
+  font-weight: 600;
+  color: #795c73;
+}
+.education-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.education-table tbody tr {
+  transition: background-color 180ms;
+}
+.education-table tbody th {
+  width: 36%;
+}
+.education-table tbody td {
+  color: #625366;
+  line-height: 1.6;
+}
+.education-level {
+  display: block;
+  color: var(--color-berry);
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.education-degree {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+.education-course {
+  display: block;
+  font-size: 11px;
+  color: #796b78;
+  font-weight: 400;
+  margin-top: 6px;
+}
+.education-school {
+  font-weight: 500;
+}
+.education-years {
+  white-space: nowrap;
+  font-size: 13px;
+}
+.education-current {
+  display: block;
+  color: #567e61;
+  font-size: 11px;
+  margin-top: 5px;
+}
+.education-award {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  background: var(--color-lavender);
+  border: 1px solid #d9cae6;
+  border-radius: 8px;
+  color: #61466f;
+  font-size: 11px;
+  font-weight: 600;
+}
+.education-award-blush {
+  background: var(--color-blush);
+  border-color: #edc8d6;
+  color: #85445e;
+}
+.education-award > span {
+  font-size: 20px;
+  line-height: 1;
+}
+@media (hover: hover) {
+  .education-table tbody tr:hover {
+    background: #fff5f9;
+  }
+}
+@media (max-width: 767px) {
+  .education-title {
+    padding: 22px 20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .education-table th,
+  .education-table td {
+    padding: 24px 20px;
+  }
+  .education-panel {
+    border-radius: 14px;
+  }
+}
+
+/* Soft rose focus keeps the active field clear and playful. */
+.contact-form input,
+.contact-form textarea {
+  border-radius: 12px;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #c77d9b;
+  outline-offset: 3px;
+  border-color: #c77d9b;
+  background: #fff2f7;
+  box-shadow:
+    0 0 0 6px #f8e5ec,
+    0 5px 16px #99486414;
+}
