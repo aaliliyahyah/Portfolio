@@ -21,35 +21,83 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Header and desktop navigation -->
     <header class="site-header">
-      <div class="site-width header-inner">
-        <a class="wordmark" href="#home" aria-label="Your Name, back to home">
-          <span class="logo-flower" aria-hidden="true">✻</span>
-          yourname
-          <span class="text-berry">.dev</span>
+      <div class="header-inner">
+        <a class="header-home" href="#home" aria-label="Aaliyah, home">
+          <img
+            class="header-flower"
+            src="assets/cherry-blossom.svg"
+            width="64"
+            height="64"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="header-wordmark">
+            aaliyah
+            <span>design &amp; development</span>
+          </span>
         </a>
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-controls="main-nav"
-          aria-expanded="false"
-          hidden
-        >
-          Menu
-          <span aria-hidden="true">☰</span>
-        </button>
         <nav id="main-nav" aria-label="Main navigation">
-          <a href="#about">About</a>
+          <a href="#home">Home</a>
+          <a href="#about">About Me</a>
           <a href="#skills">Skills</a>
           <a href="#education">Education</a>
           <a href="#projects">Projects</a>
           <a href="#goals">Goals</a>
-          <a class="nav-contact" href="#contact">
-            Let’s talk
+          <a class="nav-hello" href="#contact">
+            Contact
             <span aria-hidden="true">↗</span>
           </a>
         </nav>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          hidden
+        >
+          <span class="menu-toggle-icon" aria-hidden="true">
+            <i></i>
+            <i></i>
+          </span>
+          menu
+        </button>
       </div>
+      <!-- Mobile navigation -->
+      <dialog id="mobile-menu" class="header-menu" aria-label="Site navigation">
+        <div class="header-menu-top">
+          <a class="header-home" href="#home" aria-label="Aaliyah, home">
+            <img
+              class="header-flower"
+              src="assets/cherry-blossom.svg"
+              width="64"
+              height="64"
+              alt=""
+              aria-hidden="true"
+            />
+            <span class="header-wordmark">
+              aaliyah
+              <span>design &amp; development</span>
+            </span>
+          </a>
+          <button class="menu-close" type="button" autofocus>close</button>
+        </div>
+        <nav class="mobile-links" aria-label="Mobile navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About Me</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#goals">Goals</a>
+          <a class="nav-hello" href="#contact">
+            Contact
+            <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+        <p class="menu-signoff">A little code. A lot of curiosity.</p>
+      </dialog>
     </header>
 
     <main id="main">
