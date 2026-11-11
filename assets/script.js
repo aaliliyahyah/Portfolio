@@ -263,7 +263,7 @@ function initPointerEffects() {
     true,
   );
   document
-    .querySelectorAll('.project-image')
+    .querySelectorAll('.project-image:not(.project-showcase)')
     .forEach((surface) => followPointer(surface, surface.querySelector('img'), 8));
   function resetInteractiveMotion() {
     interactiveResets.forEach((reset) => reset());
