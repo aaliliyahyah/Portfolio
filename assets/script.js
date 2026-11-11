@@ -113,7 +113,29 @@ function initContactForm() {
   }
 }
 
+function initPhotocard() {
+  // Native button activation supports taps, clicks, Enter, and Space.
+  const photocard = document.querySelector('.photocard');
+  if (photocard) {
+    photocard.disabled = false;
+    photocard.classList.add('photocard-ready');
+    photocard.setAttribute('aria-pressed', 'false');
+    photocard.setAttribute('aria-label', 'Reveal Aaliyah’s photo');
+    photocard.addEventListener('click', () => {
+      const revealed = photocard.getAttribute('aria-pressed') !== 'true';
+      photocard.setAttribute('aria-pressed', String(revealed));
+      photocard.setAttribute(
+        'aria-label',
+        revealed
+          ? 'Photo of Aaliyah wearing a red shirt and making a peace sign. Turn card back over'
+          : 'Reveal Aaliyah’s photo',
+      );
+    });
+  }
+}
+
 // The script is deferred, so the document is ready before features initialize.
 initNavigation();
 initContactForm();
+initPhotocard();
 document.querySelector('#year').textContent = new Date().getFullYear();
