@@ -1,128 +1,639 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff9fc">
-  <meta name="description" content="A developer's little corner of the internet. Explore projects, technical skills, learning, and what comes next. An editable portfolio template.">
-  <title>Your Name — Developer & Curious Human</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
-  <script src="assets/script.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="site-width header-inner">
-      <a class="wordmark" href="#home" aria-label="Your Name, back to home"><span class="logo-flower" aria-hidden="true">✻</span> yourname<span class="text-berry">.dev</span></a>
-      <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" hidden>Menu <span aria-hidden="true">☰</span></button>
-      <nav id="main-nav" aria-label="Main navigation">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#goals">Goals</a><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff9fc" />
+    <meta
+      name="description"
+      content="A developer's little corner of the internet. Explore projects, technical skills, learning, and what comes next. An editable portfolio template."
+    />
+    <title>Your Name — Developer & Curious Human</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-width header-inner">
+        <a class="wordmark" href="#home" aria-label="Your Name, back to home">
+          <span class="logo-flower" aria-hidden="true">✻</span>
+          yourname
+          <span class="text-berry">.dev</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          hidden
+        >
+          Menu
+          <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="main-nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#goals">Goals</a>
+          <a class="nav-contact" href="#contact">
+            Let’s talk
+            <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </header>
 
-  <main id="main">
-    <div class="hero-backdrop"><section id="home" class="hero site-width" aria-labelledby="hero-heading">
-      <div class="hero-copy">
-        <p class="intro-note"><span aria-hidden="true">✦</span> A little code. A lot of curiosity.</p>
-        <h1 id="hero-heading">Hi, I’m<br><span class="name-highlight">Your Name<span class="name-spark" aria-hidden="true">✧</span></span></h1>
-        <p class="hero-role">Developer & curious human.</p>
-        <p class="hero-description">Turning little ideas into thoughtful digital experiences. Learning, building, and making the web a friendlier place.</p>
-        <div class="flex flex-wrap gap-3 mt-7">
-          <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
-          <a class="button button-light" href="#contact">Say hello <span aria-hidden="true">♡</span></a>
+    <main id="main">
+      <div class="hero-backdrop">
+        <section id="home" class="hero site-width" aria-labelledby="hero-heading">
+          <div class="hero-copy">
+            <p class="intro-note">
+              <span aria-hidden="true">✦</span>
+              A little code. A lot of curiosity.
+            </p>
+            <h1 id="hero-heading">
+              Hi, I’m
+              <br />
+              <span class="name-highlight">
+                Your Name
+                <span class="name-spark" aria-hidden="true">✧</span>
+              </span>
+            </h1>
+            <p class="hero-role">Developer & curious human.</p>
+            <p class="hero-description">
+              Turning little ideas into thoughtful digital experiences. Learning, building, and
+              making the web a friendlier place.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-7">
+              <a class="button button-primary" href="#projects">
+                Explore my projects
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="button button-light" href="#contact">
+                Say hello
+                <span aria-hidden="true">♡</span>
+              </a>
+            </div>
+            <p class="hero-footnote">
+              <span class="little-dot" aria-hidden="true"></span>
+              Always making room for something new.
+            </p>
+          </div>
+          <div class="hero-art">
+            <span class="hand-note hero-note">
+              welcome to my little corner
+              <span aria-hidden="true">↴</span>
+            </span>
+            <div class="art-paper">
+              <span class="tape tape-top" aria-hidden="true"></span>
+              <img
+                src="assets/developer-desk.svg"
+                width="560"
+                height="440"
+                alt="Pastel illustration of a laptop showing HTML code on a desk with a plant, a coffee mug, and handwritten notes."
+              />
+              <span class="paper-caption">a work in progress, in the best way.</span>
+            </div>
+            <span class="sticker build-sticker">
+              <span aria-hidden="true">✿</span>
+              made with
+              <br />
+              curiosity
+            </span>
+            <span class="floating-spark" aria-hidden="true">✧</span>
+          </div>
+          <a class="scroll-note" href="#about">
+            <span aria-hidden="true">↓</span>
+            Get to know me
+          </a>
+        </section>
+      </div>
+
+      <div class="ribbon" aria-hidden="true">
+        <div>
+          thoughtful design
+          <span>✻</span>
+          clean code
+          <span>✻</span>
+          lifelong learning
+          <span>✻</span>
+          little details, big heart
+          <span>✻</span>
+          thoughtful design
+          <span>✻</span>
+          clean code
+          <span>✻</span>
+          lifelong learning
         </div>
-        <p class="hero-footnote"><span class="little-dot" aria-hidden="true"></span> Always making room for something new.</p>
       </div>
-      <div class="hero-art">
-        <span class="hand-note hero-note">welcome to my little corner <span aria-hidden="true">↴</span></span>
-        <div class="art-paper"><span class="tape tape-top" aria-hidden="true"></span><img src="assets/developer-desk.svg" width="560" height="440" alt="Pastel illustration of a laptop showing HTML code on a desk with a plant, a coffee mug, and handwritten notes."><span class="paper-caption">a work in progress, in the best way.</span></div>
-        <span class="sticker build-sticker"><span aria-hidden="true">✿</span> made with<br>curiosity</span>
-        <span class="floating-spark" aria-hidden="true">✧</span>
-      </div>
-      <a class="scroll-note" href="#about"><span aria-hidden="true">↓</span> Get to know me</a>
-    </section></div>
 
-    <div class="ribbon" aria-hidden="true"><div>thoughtful design <span>✻</span> clean code <span>✻</span> lifelong learning <span>✻</span> little details, big heart <span>✻</span> thoughtful design <span>✻</span> clean code <span>✻</span> lifelong learning</div></div>
-
-    <section id="about" class="section site-width" aria-labelledby="about-heading">
-      <div class="section-heading"><p class="eyebrow">The human behind the screen</p><h2 id="about-heading">A little about me<span class="text-berry">.</span></h2></div>
-      <div class="about-layout">
-        <div class="about-photo"><span class="tape" aria-hidden="true"></span><img src="assets/profile.svg" width="360" height="310" loading="lazy" alt="Illustrated profile placeholder: a smiling person wearing a lavender sweater against a pink background."><p>Your future favorite teammate <span aria-hidden="true">♡</span></p></div>
-        <div class="about-copy">
-          <span class="sample-label">Editable introduction</span>
-          <h3>Part problem-solver.<br>Part pixel enthusiast.</h3>
-          <p>I’m [Your Name], a [your course or developer role] who enjoys connecting creativity with code. I’m interested in building useful, accessible websites that feel just as good to use as they look.</p>
-          <p>This is where my learning comes to life: small experiments, thoughtful projects, and plenty of “what if?” moments. Replace this introduction with your own story.</p>
-          <ul class="interest-list" aria-label="Example interests"><li><span aria-hidden="true">⌘</span> Building for the web</li><li><span aria-hidden="true">✎</span> Creative little details</li><li><span aria-hidden="true">☕</span> Learning something new</li></ul>
+      <section id="about" class="section site-width" aria-labelledby="about-heading">
+        <div class="section-heading">
+          <p class="eyebrow">The human behind the screen</p>
+          <h2 id="about-heading">
+            A little about me
+            <span class="text-berry">.</span>
+          </h2>
         </div>
-        <aside class="sticky-note"><span aria-hidden="true" class="note-star">✻</span><p>My approach</p><blockquote>“Make it work.<br>Make it thoughtful.<br>Keep growing.”</blockquote><span class="hand-note">one little step at a time</span></aside>
-      </div>
-    </section>
-
-    <section id="skills" class="section skills-section" aria-labelledby="skills-heading">
-      <div class="site-width">
-        <div class="section-heading heading-row"><div><p class="eyebrow">Things in my toolkit</p><h2 id="skills-heading">My technical skills<span class="text-berry">.</span></h2></div><p class="section-aside">A growing collection of tools<br>for bringing ideas to life.</p></div>
-        <p class="sample-note">Example toolkit · Replace these with technologies you actually use.</p>
-        <div class="grid md:grid-cols-3 gap-5">
-          <article class="skill-card bg-blush"><span class="skill-icon" aria-hidden="true">&lt;/&gt;</span><h3>Frontend development</h3><p>Building the parts people see and interact with.</p><ul class="tags"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Tailwind CSS</li></ul></article>
-          <article class="skill-card bg-lavender"><span class="skill-icon" aria-hidden="true">✎</span><h3>Design & experience</h3><p>Finding the balance between useful and delightful.</p><ul class="tags"><li>Figma</li><li>Responsive design</li><li>Accessibility</li><li>UI design</li></ul></article>
-          <article class="skill-card bg-mint"><span class="skill-icon" aria-hidden="true">⌘</span><h3>Tools & workflow</h3><p>Small tools that make building a little smoother.</p><ul class="tags"><li>Git</li><li>GitHub</li><li>VS Code</li><li>Browser DevTools</li></ul></article>
+        <div class="about-layout">
+          <div class="about-photo">
+            <span class="tape" aria-hidden="true"></span>
+            <img
+              src="assets/profile.svg"
+              width="360"
+              height="310"
+              loading="lazy"
+              alt="Illustrated profile placeholder: a smiling person wearing a lavender sweater against a pink background."
+            />
+            <p>
+              Your future favorite teammate
+              <span aria-hidden="true">♡</span>
+            </p>
+          </div>
+          <div class="about-copy">
+            <span class="sample-label">Editable introduction</span>
+            <h3>
+              Part problem-solver.
+              <br />
+              Part pixel enthusiast.
+            </h3>
+            <p>
+              I’m [Your Name], a [your course or developer role] who enjoys connecting creativity
+              with code. I’m interested in building useful, accessible websites that feel just as
+              good to use as they look.
+            </p>
+            <p>
+              This is where my learning comes to life: small experiments, thoughtful projects, and
+              plenty of “what if?” moments. Replace this introduction with your own story.
+            </p>
+            <ul class="interest-list" aria-label="Example interests">
+              <li>
+                <span aria-hidden="true">⌘</span>
+                Building for the web
+              </li>
+              <li>
+                <span aria-hidden="true">✎</span>
+                Creative little details
+              </li>
+              <li>
+                <span aria-hidden="true">☕</span>
+                Learning something new
+              </li>
+            </ul>
+          </div>
+          <aside class="sticky-note">
+            <span aria-hidden="true" class="note-star">✻</span>
+            <p>My approach</p>
+            <blockquote>
+              “Make it work.
+              <br />
+              Make it thoughtful.
+              <br />
+              Keep growing.”
+            </blockquote>
+            <span class="hand-note">one little step at a time</span>
+          </aside>
         </div>
-        <p class="learning-note"><span aria-hidden="true">↳</span> Next on my learning list: <span>[your next technology]</span> <span aria-hidden="true">✧</span></p>
-      </div>
-    </section>
+      </section>
 
-    <section id="education" class="section site-width" aria-labelledby="education-heading">
-      <div class="section-heading heading-row"><div><p class="eyebrow">Where it all starts</p><h2 id="education-heading">Learning, always<span class="text-berry">.</span></h2></div><span class="section-doodle" aria-hidden="true">✎</span></div>
-      <div class="education-panel">
-        <div class="education-title"><h3>Educational background</h3><span class="small-mono">notes from my journey</span></div>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Educational background table, scroll horizontally on smaller screens">
-          <table><caption>Sample education entries — replace with your actual qualifications and dates.</caption><thead><tr><th scope="col">Qualification</th><th scope="col">Institution</th><th scope="col">Years</th><th scope="col">Highlights</th></tr></thead><tbody><tr><th scope="row">[Your degree or program]</th><td>[Your university]</td><td>[Start–End]</td><td>[Relevant coursework or activities]</td></tr><tr><th scope="row">[Previous qualification]</th><td>[Your school]</td><td>[Start–End]</td><td>[Your learning highlights]</td></tr></tbody></table>
+      <section id="skills" class="section skills-section" aria-labelledby="skills-heading">
+        <div class="site-width">
+          <div class="section-heading heading-row">
+            <div>
+              <p class="eyebrow">Things in my toolkit</p>
+              <h2 id="skills-heading">
+                My technical skills
+                <span class="text-berry">.</span>
+              </h2>
+            </div>
+            <p class="section-aside">
+              A growing collection of tools
+              <br />
+              for bringing ideas to life.
+            </p>
+          </div>
+          <p class="sample-note">
+            Example toolkit · Replace these with technologies you actually use.
+          </p>
+          <div class="grid md:grid-cols-3 gap-5">
+            <article class="skill-card bg-blush">
+              <span class="skill-icon" aria-hidden="true">&lt;/&gt;</span>
+              <h3>Frontend development</h3>
+              <p>Building the parts people see and interact with.</p>
+              <ul class="tags">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </article>
+            <article class="skill-card bg-lavender">
+              <span class="skill-icon" aria-hidden="true">✎</span>
+              <h3>Design & experience</h3>
+              <p>Finding the balance between useful and delightful.</p>
+              <ul class="tags">
+                <li>Figma</li>
+                <li>Responsive design</li>
+                <li>Accessibility</li>
+                <li>UI design</li>
+              </ul>
+            </article>
+            <article class="skill-card bg-mint">
+              <span class="skill-icon" aria-hidden="true">⌘</span>
+              <h3>Tools & workflow</h3>
+              <p>Small tools that make building a little smoother.</p>
+              <ul class="tags">
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+                <li>Browser DevTools</li>
+              </ul>
+            </article>
+          </div>
+          <p class="learning-note">
+            <span aria-hidden="true">↳</span>
+            Next on my learning list:
+            <span>[your next technology]</span>
+            <span aria-hidden="true">✧</span>
+          </p>
         </div>
-        <p class="education-footer"><span aria-hidden="true">✦</span> The classroom is only the beginning. There’s always more to explore.</p>
-      </div>
-    </section>
+      </section>
 
-    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
-      <div class="site-width">
-        <div class="section-heading heading-row"><div><p class="eyebrow">From “what if” to “here it is”</p><h2 id="projects-heading">Things I’ve been making<span class="text-berry">.</span></h2></div><span class="hand-note projects-note">a few little ideas, brought to life ↙</span></div>
-        <p class="sample-note">Illustrative project concepts · Add your own work and links here.</p>
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="project-card"><div class="project-image bg-lavender"><span class="project-badge">Sample project</span><img src="assets/project-planner.svg" width="480" height="340" loading="lazy" alt="Concept preview of Little Plans, a lavender task planner with Today, This Week, and Someday columns."></div><div class="project-content"><p class="project-kind">Productivity / Web app</p><h3>Little Plans</h3><p>A cozy task planner concept for making busy days feel a little more manageable.</p><ul class="project-tags"><li>HTML</li><li>Tailwind CSS</li><li>JavaScript</li></ul><p class="project-placeholder">[Add your project description and links]</p></div></article>
-          <article class="project-card"><div class="project-image bg-mint"><span class="project-badge">Sample project</span><img src="assets/project-garden.svg" width="480" height="340" loading="lazy" alt="Concept preview of Plant & Pause, a plant-care website with three illustrated houseplants."></div><div class="project-content"><p class="project-kind">Lifestyle / Website</p><h3>Plant & Pause</h3><p>A friendly plant-care website concept for growing a greener little corner at home.</p><ul class="project-tags"><li>HTML</li><li>CSS</li><li>Responsive design</li></ul><p class="project-placeholder">[Add your project description and links]</p></div></article>
-          <article class="project-card"><div class="project-image bg-blush"><span class="project-badge">Sample project</span><img src="assets/project-notes.svg" width="480" height="340" loading="lazy" alt="Concept preview of Daily Pages, a pink digital journal with a writing page and a mood selector."></div><div class="project-content"><p class="project-kind">Personal / Web app</p><h3>Daily Pages</h3><p>A digital journal concept to collect thoughts, small wins, and everyday inspiration.</p><ul class="project-tags"><li>HTML</li><li>Tailwind CSS</li><li>JavaScript</li></ul><p class="project-placeholder">[Add your project description and links]</p></div></article>
+      <section id="education" class="section site-width" aria-labelledby="education-heading">
+        <div class="section-heading heading-row">
+          <div>
+            <p class="eyebrow">Where it all starts</p>
+            <h2 id="education-heading">
+              Learning, always
+              <span class="text-berry">.</span>
+            </h2>
+          </div>
+          <span class="section-doodle" aria-hidden="true">✎</span>
         </div>
-      </div>
-    </section>
+        <div class="education-panel">
+          <div class="education-title">
+            <h3>Educational background</h3>
+            <span class="small-mono">notes from my journey</span>
+          </div>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Educational background table, scroll horizontally on smaller screens"
+          >
+            <table>
+              <caption>
+                Sample education entries — replace with your actual qualifications and dates.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Qualification</th>
+                  <th scope="col">Institution</th>
+                  <th scope="col">Years</th>
+                  <th scope="col">Highlights</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">[Your degree or program]</th>
+                  <td>[Your university]</td>
+                  <td>[Start–End]</td>
+                  <td>[Relevant coursework or activities]</td>
+                </tr>
+                <tr>
+                  <th scope="row">[Previous qualification]</th>
+                  <td>[Your school]</td>
+                  <td>[Start–End]</td>
+                  <td>[Your learning highlights]</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="education-footer">
+            <span aria-hidden="true">✦</span>
+            The classroom is only the beginning. There’s always more to explore.
+          </p>
+        </div>
+      </section>
 
-    <section id="goals" class="section site-width" aria-labelledby="goals-heading">
-      <div class="goals-layout"><div class="goals-intro"><p class="eyebrow">Looking ahead</p><h2 id="goals-heading">Still growing.<br>Still dreaming<span class="text-berry">.</span></h2><p>Every project is a stepping stone. Here’s an editable roadmap for what comes next.</p><div class="goal-flower" aria-hidden="true">✿<span>good things take growing</span></div></div>
-        <ol class="goal-list"><li><span class="goal-number" aria-hidden="true">01</span><div><p class="goal-time">Near term</p><h3>Build a strong foundation</h3><p>Deepen my understanding of web fundamentals and finish projects that turn theory into practice.</p></div></li><li><span class="goal-number" aria-hidden="true">02</span><div><p class="goal-time">Medium term</p><h3>Learn alongside a team</h3><p>Contribute to meaningful projects, seek an internship, and grow through collaboration and feedback.</p></div></li><li><span class="goal-number" aria-hidden="true">03</span><div><p class="goal-time">Long term</p><h3>Create things that matter</h3><p>Become a thoughtful developer who builds accessible experiences and helps others find their start.</p></div></li></ol>
-      </div>
-    </section>
+      <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+        <div class="site-width">
+          <div class="section-heading heading-row">
+            <div>
+              <p class="eyebrow">From “what if” to “here it is”</p>
+              <h2 id="projects-heading">
+                Things I’ve been making
+                <span class="text-berry">.</span>
+              </h2>
+            </div>
+            <span class="hand-note projects-note">a few little ideas, brought to life ↙</span>
+          </div>
+          <p class="sample-note">
+            Illustrative project concepts · Add your own work and links here.
+          </p>
+          <div class="grid md:grid-cols-3 gap-6">
+            <article class="project-card">
+              <div class="project-image bg-lavender">
+                <span class="project-badge">Sample project</span>
+                <img
+                  src="assets/project-planner.svg"
+                  width="480"
+                  height="340"
+                  loading="lazy"
+                  alt="Concept preview of Little Plans, a lavender task planner with Today, This Week, and Someday columns."
+                />
+              </div>
+              <div class="project-content">
+                <p class="project-kind">Productivity / Web app</p>
+                <h3>Little Plans</h3>
+                <p>
+                  A cozy task planner concept for making busy days feel a little more manageable.
+                </p>
+                <ul class="project-tags">
+                  <li>HTML</li>
+                  <li>Tailwind CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project-placeholder">[Add your project description and links]</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-image bg-mint">
+                <span class="project-badge">Sample project</span>
+                <img
+                  src="assets/project-garden.svg"
+                  width="480"
+                  height="340"
+                  loading="lazy"
+                  alt="Concept preview of Plant & Pause, a plant-care website with three illustrated houseplants."
+                />
+              </div>
+              <div class="project-content">
+                <p class="project-kind">Lifestyle / Website</p>
+                <h3>Plant & Pause</h3>
+                <p>
+                  A friendly plant-care website concept for growing a greener little corner at home.
+                </p>
+                <ul class="project-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Responsive design</li>
+                </ul>
+                <p class="project-placeholder">[Add your project description and links]</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-image bg-blush">
+                <span class="project-badge">Sample project</span>
+                <img
+                  src="assets/project-notes.svg"
+                  width="480"
+                  height="340"
+                  loading="lazy"
+                  alt="Concept preview of Daily Pages, a pink digital journal with a writing page and a mood selector."
+                />
+              </div>
+              <div class="project-content">
+                <p class="project-kind">Personal / Web app</p>
+                <h3>Daily Pages</h3>
+                <p>
+                  A digital journal concept to collect thoughts, small wins, and everyday
+                  inspiration.
+                </p>
+                <ul class="project-tags">
+                  <li>HTML</li>
+                  <li>Tailwind CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project-placeholder">[Add your project description and links]</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
-      <div class="site-width contact-layout">
-        <div class="contact-copy"><p class="eyebrow">Good things start with a hello</p><h2 id="contact-heading">Have an idea?<br>Let’s make<br>something<span class="text-berry">.</span></h2><p>A project, an opportunity, or just a friendly hello — I’d love to hear from you.</p><div class="contact-address"><span aria-hidden="true">✉</span><span>[Your email address]<small>Replace with your preferred contact email.</small></span></div><span class="hand-note contact-note">my inbox could use a little sunshine ☼</span></div>
-        <!-- Set data-recipient to your real email address to enable email drafts. -->
-        <form id="contact-form" class="contact-form" data-recipient="" aria-describedby="form-description">
-          <div class="form-top"><span aria-hidden="true">♡</span> A little note to say hello</div>
-          <div class="form-fields"><p id="form-description">This form opens an email draft. You’ll finish sending it in your email app.</p>
-          <div class="grid sm:grid-cols-2 gap-5"><div><label for="name">Your name <span aria-hidden="true">*</span></label><input id="name" name="name" autocomplete="name" placeholder="What should I call you?" required maxlength="100"></div><div><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></div></div>
-          <div><label for="subject">What’s on your mind? <span aria-hidden="true">*</span></label><input id="subject" name="subject" placeholder="A project, an opportunity, a hello…" required maxlength="200"></div>
-          <div><label for="message">Your message <span aria-hidden="true">*</span></label><textarea id="message" name="message" rows="4" placeholder="Tell me a little about it…" required maxlength="5000"></textarea></div>
-          <p id="form-status" class="form-status" role="status" aria-live="polite">Template preview: add your recipient email to enable email drafts.</p>
-          <noscript><p class="form-status">Enable JavaScript to prepare an email draft. This static form does not send messages.</p></noscript>
-          <button id="contact-submit" class="button button-primary w-full" type="submit" disabled>Prepare email draft <span aria-hidden="true">↗</span></button><p class="form-footnote">A little conversation could be the start of something lovely.</p></div>
-        </form>
+      <section id="goals" class="section site-width" aria-labelledby="goals-heading">
+        <div class="goals-layout">
+          <div class="goals-intro">
+            <p class="eyebrow">Looking ahead</p>
+            <h2 id="goals-heading">
+              Still growing.
+              <br />
+              Still dreaming
+              <span class="text-berry">.</span>
+            </h2>
+            <p>
+              Every project is a stepping stone. Here’s an editable roadmap for what comes next.
+            </p>
+            <div class="goal-flower" aria-hidden="true">
+              ✿
+              <span>good things take growing</span>
+            </div>
+          </div>
+          <ol class="goal-list">
+            <li>
+              <span class="goal-number" aria-hidden="true">01</span>
+              <div>
+                <p class="goal-time">Near term</p>
+                <h3>Build a strong foundation</h3>
+                <p>
+                  Deepen my understanding of web fundamentals and finish projects that turn theory
+                  into practice.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="goal-number" aria-hidden="true">02</span>
+              <div>
+                <p class="goal-time">Medium term</p>
+                <h3>Learn alongside a team</h3>
+                <p>
+                  Contribute to meaningful projects, seek an internship, and grow through
+                  collaboration and feedback.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="goal-number" aria-hidden="true">03</span>
+              <div>
+                <p class="goal-time">Long term</p>
+                <h3>Create things that matter</h3>
+                <p>
+                  Become a thoughtful developer who builds accessible experiences and helps others
+                  find their start.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+        <div class="site-width contact-layout">
+          <div class="contact-copy">
+            <p class="eyebrow">Good things start with a hello</p>
+            <h2 id="contact-heading">
+              Have an idea?
+              <br />
+              Let’s make
+              <br />
+              something
+              <span class="text-berry">.</span>
+            </h2>
+            <p>A project, an opportunity, or just a friendly hello — I’d love to hear from you.</p>
+            <div class="contact-address">
+              <span aria-hidden="true">✉</span>
+              <span>
+                [Your email address]
+                <small>Replace with your preferred contact email.</small>
+              </span>
+            </div>
+            <span class="hand-note contact-note">my inbox could use a little sunshine ☼</span>
+          </div>
+          <!-- Set data-recipient to your real email address to enable email drafts. -->
+          <form
+            id="contact-form"
+            class="contact-form"
+            data-recipient=""
+            aria-describedby="form-description"
+          >
+            <div class="form-top">
+              <span aria-hidden="true">♡</span>
+              A little note to say hello
+            </div>
+            <div class="form-fields">
+              <p id="form-description">
+                This form opens an email draft. You’ll finish sending it in your email app.
+              </p>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name">
+                    Your name
+                    <span aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    placeholder="What should I call you?"
+                    required
+                    maxlength="100"
+                  />
+                </div>
+                <div>
+                  <label for="email">
+                    Email address
+                    <span aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                    maxlength="254"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="subject">
+                  What’s on your mind?
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="subject"
+                  name="subject"
+                  placeholder="A project, an opportunity, a hello…"
+                  required
+                  maxlength="200"
+                />
+              </div>
+              <div>
+                <label for="message">
+                  Your message
+                  <span aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Tell me a little about it…"
+                  required
+                  maxlength="5000"
+                ></textarea>
+              </div>
+              <p id="form-status" class="form-status" role="status" aria-live="polite">
+                Template preview: add your recipient email to enable email drafts.
+              </p>
+              <noscript>
+                <p class="form-status">
+                  Enable JavaScript to prepare an email draft. This static form does not send
+                  messages.
+                </p>
+              </noscript>
+              <button
+                id="contact-submit"
+                class="button button-primary w-full"
+                type="submit"
+                disabled
+              >
+                Prepare email draft
+                <span aria-hidden="true">↗</span>
+              </button>
+              <p class="form-footnote">
+                A little conversation could be the start of something lovely.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer site-width">
+      <div class="footer-main">
+        <a class="wordmark" href="#home">
+          <span class="logo-flower" aria-hidden="true">✻</span>
+          yourname
+          <span class="text-berry">.dev</span>
+        </a>
+        <p>
+          Built with intention, Tailwind, and a little
+          <span aria-label="love">♡</span>
+          .
+        </p>
+        <a class="back-top" href="#home">
+          Back to top
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
-    </section>
-  </main>
-  <footer class="site-footer site-width"><div class="footer-main"><a class="wordmark" href="#home"><span class="logo-flower" aria-hidden="true">✻</span> yourname<span class="text-berry">.dev</span></a><p>Built with intention, Tailwind, and a little <span aria-label="love">♡</span>.</p><a class="back-top" href="#home">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>© <span id="year">2026</span> [Your Name]. Keep creating.</p><p>Design inspiration: <a href="https://jooeunlee.com/" target="_blank" rel="noopener noreferrer">Jooeun Lee<span class="sr-only"> (opens in a new tab)</span></a> & <a href="https://sskd.tech/" target="_blank" rel="noopener noreferrer">sskd.tech<span class="sr-only"> (opens in a new tab)</span></a></p></div></footer>
-</body>
+      <div class="footer-bottom">
+        <p>
+          ©
+          <span id="year">2026</span>
+          [Your Name]. Keep creating.
+        </p>
+        <p>
+          Design inspiration:
+          <a href="https://jooeunlee.com/" target="_blank" rel="noopener noreferrer">
+            Jooeun Lee
+            <span class="sr-only">(opens in a new tab)</span>
+          </a>
+          &
+          <a href="https://sskd.tech/" target="_blank" rel="noopener noreferrer">
+            sskd.tech
+            <span class="sr-only">(opens in a new tab)</span>
+          </a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

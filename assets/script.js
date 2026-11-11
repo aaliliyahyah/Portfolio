@@ -34,10 +34,14 @@ const submitButton = document.querySelector('#contact-submit');
 
 if (form && status && submitButton) {
   submitButton.disabled = false;
-  form.addEventListener('invalid', (event) => {
-    event.target.setAttribute('aria-invalid', 'true');
-    status.textContent = 'Please complete the required fields and enter a valid email address.';
-  }, true);
+  form.addEventListener(
+    'invalid',
+    (event) => {
+      event.target.setAttribute('aria-invalid', 'true');
+      status.textContent = 'Please complete the required fields and enter a valid email address.';
+    },
+    true,
+  );
   form.addEventListener('input', (event) => {
     if (event.target.matches('input, textarea') && event.target.validity.valid) {
       event.target.removeAttribute('aria-invalid');
@@ -46,8 +50,12 @@ if (form && status && submitButton) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const recipient = form.dataset.recipient.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient) || /example\.(com|org|net)$|\[|\]/i.test(recipient)) {
-      status.textContent = 'This portfolio is a template. Add a real recipient email to enable email drafts. Your message has not been sent.';
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient) ||
+      /example\.(com|org|net)$|\[|\]/i.test(recipient)
+    ) {
+      status.textContent =
+        'This portfolio is a template. Add a real recipient email to enable email drafts. Your message has not been sent.';
       return;
     }
     const fields = new FormData(form);
@@ -63,7 +71,8 @@ if (form && status && submitButton) {
     }
     const body = `${message}\n\nFrom: ${name}\nReply to: ${fields.get('email').trim()}`;
     const draft = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    status.textContent = 'Your email draft is ready. If your email app opens, review the draft and send it there. Nothing has been sent by this website.';
+    status.textContent =
+      'Your email draft is ready. If your email app opens, review the draft and send it there. Nothing has been sent by this website.';
     window.location.href = draft;
   });
 }
