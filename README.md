@@ -1,43 +1,32 @@
-# Your Name — Developer Portfolio
+# Aaliyah — Portfolio
 
-A responsive pastel scrapbook portfolio built with semantic HTML, Tailwind CSS, and vanilla JavaScript. Personal details and project concepts are editable examples, not claims about a real person.
+Personal portfolio for Aaliyah Shandice R. Catolico, UI/UX Designer and Front-End Developer. Built with semantic HTML, Tailwind CSS, and vanilla JavaScript.
 
-## Run locally
+## Local development
 
-Requires Node.js/npm and Python 3 for the preview server.
+Run `npm install`, `npm run build`, and `npm run dev`. Open http://127.0.0.1:5173. Use `npm run watch` while editing styles. CSS source is `src/styles.css`; commit the generated `assets/styles.css` with changes.
 
-```sh
-npm install
-npm run build
-npm run dev
-```
+## Code organization and formatting
 
-Open http://127.0.0.1:5173. Run `npm run watch` in another terminal while editing styles. Compiled `assets/styles.css` is included, so you can also open `index.html` directly without installing dependencies.
+- `index.html`: page content and semantic sections.
+- `src/styles.css`: Tailwind entry point and ordered stylesheet imports.
+- `src/styles/`: theme and base rules (`foundation.css`), shared components, responsive defaults, layout, hero/navigation, toolkit, photocard, decorations, section styles, and final refinements. Imports retain cascade order; keep `refinements.css` last.
+- `assets/script.js`: feature initializers for navigation, contact, photocard, scroll animations, pointer effects, toolkit, and background spotlight.
+- `assets/*.svg`: logos, cursors, decorations, and project illustrations.
+- `assets/styles.css`: generated Tailwind output; rebuild instead of editing directly.
 
-## Personalize
+Run `npm run format` to format the source with Prettier and `npm run format:check` to verify formatting. Configuration lives in `.prettierrc.json`; `.prettierignore` excludes dependencies and generated CSS. After changing styles, run `npm run build` and commit the generated CSS alongside the source.
 
-- In `index.html`, replace `Your Name`, `yourname.dev`, the introduction, example skills, education entries, goals, email display, and footer details. Update the document title and description too.
-- Replace sample projects with real descriptions, screenshots, technologies, and meaningful links. Remove sample labels after replacing the content. No fake demo or source links are included.
-- Replace `assets/profile.svg` with your own image and update its descriptive `alt`, width, and height. All provided SVG illustrations are original local assets.
-- Set the contact form’s `data-recipient=""` attribute to your real email address, and update the visible email address. Optionally make the visible address a `mailto:` link after configuring it.
-- Once configured, replace the initial `#form-status` text with “Required fields are marked with an asterisk.” The submit handler also validates the recipient at runtime.
-- Theme tokens and responsive styles are in `src/styles.css`. Rebuild CSS after changing HTML classes or styles. Commit the compiled stylesheet alongside source changes.
+## Content
 
-## Contact behavior
+About, toolkit, education, contact details, and social links use Aaliyah’s supplied information. Hero wording and supplied photos are retained. The three projects are clearly labeled sample concepts pending real project details. Profile links open in a new tab.
 
-The form checks required fields and email format. It opens a prefilled draft in the visitor’s configured email app; the visitor must send that email themselves. There is no backend, storage, or delivery confirmation. Text is preserved in the form. With an empty or example-domain recipient, a configuration message appears and no draft opens. Without JavaScript, the submit button stays disabled with an explanation.
+The contact form opens a prefilled email draft addressed to aaliyahshandicecatolico@gmail.com. Visitors review and send it in their email app. The website does not send or store messages.
 
-## Included requirements
+## Design and interaction
 
-Header, navigation, About Me, Technical Skills, Educational Background, Projects, Career Goals, Contact Me, and footer. Includes heading hierarchy, paragraphs, links, ordered/unordered lists, a captioned table, labeled form controls, descriptive image alternatives, skip navigation, keyboard focus, responsive navigation, and reduced-motion support. Small screens scroll the table within its labeled container.
+Matching cherry blossom decorations, a Cupid heart cursor with an arrowhead click point, pastel colors, a fixed cherry blossom navigation, a full-screen hero, toolkit hover effects, and downward-only scroll entrances. Tap or click the About Me photocard to flip it and reveal Aaliyah’s portrait; tap again to turn it back. The button also supports Enter and Space. A dotted background spotlight responds to precise pointers; touch and reduced-motion users see a static grid. All content remains visible without JavaScript, and reduced-motion users can flip the card without animation.
 
-Google Fonts optionally supplies Bricolage Grotesque and DM Sans; system sans-serif fonts remain available offline. Everything else is served locally. Publish `index.html` and `assets/` to a static host. No hosting or analytics is configured.
+Design references: [sskd.tech](https://sskd.tech/) and [Jooeun Lee](https://jooeunlee.com/). Design guidance researched from [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) and [ui-animation](https://github.com/mblode/agent-skills/blob/main/skills/ui-animation/SKILL.md).
 
-## Design references and research
-
-- [Jooeun Lee](https://jooeunlee.com/): dotted background, split hero, developer-inspired panels.
-- [sskd.tech](https://sskd.tech/): expressive headings, hand-drawn accents, and distinct chapters.
-- [Anthropic frontend-design skill](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md): researched for typography, composition, accessibility, and restrained motion. No external skill package was installed.
-- [Tailwind CLI documentation](https://tailwindcss.com/docs/installation/tailwind-cli).
-
-Original illustrations and a pastel palette reinterpret the references without copying their branding or images.
+Publish `index.html` and `assets/` to a static host. No deployment is configured.
