@@ -218,6 +218,9 @@
     text-wrap: balance;
   }
 }
+.form-status:empty {
+  display: none;
+}
 .project-content {
   min-width: 0;
 }

@@ -21,7 +21,7 @@ I use `npm run format` to format my source with Prettier and `npm run format:che
 
 I share my background, toolkit, education, contact details, and social links throughout my portfolio. I use my own hero wording and photos. I showcase Student Discipline Office, Cozy Loops, and Cozy Stitch with screenshots, descriptions, technology tags, and GitHub links. I display two portrait screenshots side by side for Cozy Loops and include a link to the live Student Discipline Office application. My profile links open in a new tab.
 
-My contact form opens a prefilled email draft addressed to aaliyahshandicecatolico@gmail.com. Visitors review and send it in their email app. My website does not send or store messages.
+My contact form opens a prefilled Gmail draft in a new tab addressed to aaliyahshandicecatolico@gmail.com. Visitors sign in to Gmail if needed, then review and send it there. The contact email link also opens Gmail directly, bypassing the browser’s default email handler. My website does not send or store messages.
 
 ## Design and interaction
 

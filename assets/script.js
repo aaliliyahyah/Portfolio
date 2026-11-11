@@ -105,10 +105,11 @@ function initContactForm() {
         return;
       }
       const body = `${message}\n\nFrom: ${name}\nReply to: ${fields.get('email').trim()}`;
-      const draft = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const draft = new URL('https://mail.google.com/mail/');
+      draft.search = new URLSearchParams({ view: 'cm', fs: '1', to: recipient, su: subject, body });
       status.textContent =
-        'Your email draft is ready. If your email app opens, review the draft and send it there. Nothing has been sent by this website.';
-      window.location.href = draft;
+        'Opening your draft in Gmail in a new tab. Sign in to Gmail if needed, then review and send your message. If no tab opens, allow pop-ups and try again. Your message has not been sent yet.';
+      window.open(draft.href, '_blank', 'noopener,noreferrer');
     });
   }
 }
