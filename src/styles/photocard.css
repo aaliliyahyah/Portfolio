@@ -49,11 +49,12 @@
 .about-photo {
   padding: 0;
   background: transparent;
+  transform: rotate(-3deg);
 }
 .photocard {
   display: block;
   width: 100%;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 3 / 4;
   padding: 0;
   border: 0;
   background: transparent;
@@ -83,7 +84,8 @@
 .photocard-photo {
   position: absolute;
   inset: 0;
-  padding: 10px;
+  padding: 0;
+  border-radius: 12px;
   background: #fbe0e9;
   box-shadow:
     0 5px 16px #382c401a,
@@ -92,7 +94,9 @@
   -webkit-backface-visibility: hidden;
 }
 .photocard-photo {
-  padding-bottom: calc(20% + 10px);
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
 }
 .photocard-cover {
   display: none;
@@ -171,19 +175,6 @@
 .photocard-cover .photocard-flower {
   width: 84px;
   height: 84px;
-}
-.photocard-caption {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  height: 16.6667%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #796775;
-  font: italic 13px var(--font-display);
-  letter-spacing: 0.02em;
 }
 .photocard-ready .photocard-photo {
   transform: rotateY(180deg);
