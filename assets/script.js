@@ -134,8 +134,28 @@ function initPhotocard() {
   }
 }
 
+function initToolkitAnimations() {
+  // One-time meter load; no running timers when the toolkit is outside the viewport.
+  if ('IntersectionObserver' in window) {
+    const toolkitObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          target.classList.add('is-in-view');
+          toolkitObserver.unobserve(target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document
+      .querySelectorAll('.toolkit-grid, .toolkit-terminal')
+      .forEach((element) => toolkitObserver.observe(element));
+  }
+}
+
 // The script is deferred, so the document is ready before features initialize.
 initNavigation();
 initContactForm();
 initPhotocard();
+initToolkitAnimations();
 document.querySelector('#year').textContent = new Date().getFullYear();
