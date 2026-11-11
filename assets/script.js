@@ -134,6 +134,145 @@ function initPhotocard() {
   }
 }
 
+function initScrollAnimations() {
+  // Progressive enhancement: no element is hidden until its observer is available.
+  let revealObserver;
+  const entranceAnimations = [];
+  function finishMotion() {
+    document.querySelectorAll('.reveal-pending').forEach((element) => {
+      element.classList.remove('reveal-pending');
+      element.classList.add('reveal-ready');
+    });
+    [...entranceAnimations].forEach((animation) => animation.finish());
+  }
+  if ('IntersectionObserver' in window) {
+    const inView = new WeakSet();
+    let previousScrollY = Math.max(0, window.scrollY);
+    let scrollingDown = false;
+    function updateScrollDirection() {
+      const currentScrollY = Math.max(0, window.scrollY);
+      if (currentScrollY === previousScrollY) return;
+      scrollingDown = currentScrollY > previousScrollY;
+      previousScrollY = currentScrollY;
+      // Reversing direction immediately settles any entrance still in progress.
+      if (!scrollingDown) finishMotion();
+    }
+    window.addEventListener('scroll', updateScrollDirection, { passive: true });
+    const selector =
+      '.section-heading, .about-photo, .about-copy, .sticky-note, .toolkit-card, .toolkit-terminal, .education-panel, .project-card, .learning-goals-list li, .contact-copy, .contact-form';
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        updateScrollDirection();
+        const visible = entries.filter(({ target, isIntersecting }) => {
+          if (!isIntersecting) {
+            inView.delete(target);
+            return false;
+          }
+          if (inView.has(target)) return false;
+          inView.add(target);
+          return true;
+        });
+        visible.forEach(({ target }, index) => {
+          // Replay only on downward entries; upward entries stay fully visible.
+          if (
+            !scrollingDown ||
+            motionPreference.matches ||
+            target.contains(document.activeElement) ||
+            typeof target.animate !== 'function'
+          )
+            return;
+          const animations = [
+            target.animate(
+              [
+                { opacity: 0, translate: '0 28px' },
+                { opacity: 1, translate: '0 0' },
+              ],
+              {
+                duration: 600,
+                delay: Math.min(index, 3) * 65,
+                easing: 'cubic-bezier(.22,1,.36,1)',
+                fill: 'backwards',
+              },
+            ),
+          ];
+          animations.forEach((animation) => {
+            entranceAnimations.push(animation);
+            animation.addEventListener(
+              'finish',
+              () => {
+                const position = entranceAnimations.indexOf(animation);
+                if (position !== -1) entranceAnimations.splice(position, 1);
+              },
+              { once: true },
+            );
+          });
+        });
+      },
+      { threshold: 0.06, rootMargin: '0px 0px -30px 0px' },
+    );
+    document.querySelectorAll(selector).forEach((element) => {
+      if (element.getBoundingClientRect().top < window.innerHeight) inView.add(element);
+      revealObserver.observe(element);
+    });
+    document.addEventListener('focusin', (event) => {
+      const target = event.target.closest(selector);
+      if (!target) return;
+      target.getAnimations().forEach((animation) => animation.finish());
+    });
+  }
+  motionPreference.addEventListener('change', finishMotion);
+  window.addEventListener('hashchange', () => {
+    const target = document.getElementById(window.location.hash.slice(1));
+    target?.getAnimations({ subtree: true }).forEach((animation) => animation.finish());
+  });
+}
+
+function initPointerEffects() {
+  // Direct manipulation is limited to precise pointers, with no animation loop at rest.
+  const interactiveResets = [];
+  function followPointer(surface, target, strength, centered = false) {
+    if (!surface || !target) return;
+    let frame = 0;
+    const reset = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      target.style.transform = '';
+    };
+    interactiveResets.push(reset);
+    surface.addEventListener('pointermove', (event) => {
+      if (motionPreference.matches || !precisePointer.matches || event.pointerType === 'touch')
+        return;
+      const bounds = surface.getBoundingClientRect();
+      const x = Math.max(-0.5, Math.min(0.5, (event.clientX - bounds.left) / bounds.width - 0.5));
+      const y = Math.max(-0.5, Math.min(0.5, (event.clientY - bounds.top) / bounds.height - 0.5));
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        target.style.transform = centered
+          ? `translateX(-50%) translate(${x * strength}px, ${y * strength}px) rotate(${x * 2}deg)`
+          : `perspective(900px) rotateX(${-y * strength}deg) rotateY(${x * strength}deg)`;
+        frame = 0;
+      });
+    });
+    surface.addEventListener('pointerleave', reset);
+    surface.addEventListener('pointercancel', reset);
+  }
+  followPointer(
+    document.querySelector('.cover-hero'),
+    document.querySelector('.cover-portrait'),
+    16,
+    true,
+  );
+  document
+    .querySelectorAll('.project-image')
+    .forEach((surface) => followPointer(surface, surface.querySelector('img'), 8));
+  function resetInteractiveMotion() {
+    interactiveResets.forEach((reset) => reset());
+  }
+  motionPreference.addEventListener('change', resetInteractiveMotion);
+  precisePointer.addEventListener('change', resetInteractiveMotion);
+  window.addEventListener('blur', resetInteractiveMotion);
+}
+
 function initToolkitAnimations() {
   // One-time meter load; no running timers when the toolkit is outside the viewport.
   if ('IntersectionObserver' in window) {
@@ -153,9 +292,76 @@ function initToolkitAnimations() {
   }
 }
 
+function initBackgroundSpotlight() {
+  // Brighten background dots near the pointer without adding a custom cursor.
+  const spotlightLayers = new Map();
+  document.querySelectorAll('.hero-backdrop, .section').forEach((surface) => {
+    const layer = document.createElement('div');
+    layer.className = 'background-spotlight';
+    layer.setAttribute('aria-hidden', 'true');
+    surface.prepend(layer);
+    spotlightLayers.set(surface, layer);
+  });
+  let spotlightFrame = 0;
+  let activeSpotlight = null;
+  function hideSpotlight() {
+    cancelAnimationFrame(spotlightFrame);
+    spotlightFrame = 0;
+    activeSpotlight?.classList.remove('is-active');
+    activeSpotlight = null;
+  }
+  document.addEventListener(
+    'pointermove',
+    (event) => {
+      if (
+        event.pointerType !== 'mouse' ||
+        motionPreference.matches ||
+        !precisePointer.matches ||
+        menuDialog?.open
+      ) {
+        hideSpotlight();
+        return;
+      }
+      const surface = event.target.closest('.section, .hero-backdrop');
+      const layer = spotlightLayers.get(surface);
+      if (!layer) {
+        hideSpotlight();
+        return;
+      }
+      if (activeSpotlight !== layer) {
+        hideSpotlight();
+        activeSpotlight = layer;
+        layer.classList.add('is-active');
+      }
+      cancelAnimationFrame(spotlightFrame);
+      spotlightFrame = requestAnimationFrame(() => {
+        const bounds = surface.getBoundingClientRect();
+        layer.style.setProperty('--spot-x', `${event.clientX - bounds.left}px`);
+        layer.style.setProperty('--spot-y', `${event.clientY - bounds.top}px`);
+        spotlightFrame = 0;
+      });
+    },
+    { passive: true },
+  );
+  document.documentElement.addEventListener('pointerleave', hideSpotlight);
+  document.addEventListener('pointercancel', hideSpotlight);
+  document.addEventListener('keydown', hideSpotlight);
+  window.addEventListener('scroll', hideSpotlight, { passive: true });
+  window.addEventListener('blur', hideSpotlight);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hideSpotlight();
+  });
+  motionPreference.addEventListener('change', hideSpotlight);
+  precisePointer.addEventListener('change', hideSpotlight);
+  menuButton?.addEventListener('click', hideSpotlight);
+}
+
 // The script is deferred, so the document is ready before features initialize.
 initNavigation();
 initContactForm();
 initPhotocard();
+initScrollAnimations();
+initPointerEffects();
 initToolkitAnimations();
+initBackgroundSpotlight();
 document.querySelector('#year').textContent = new Date().getFullYear();
