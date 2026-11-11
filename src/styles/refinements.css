@@ -425,40 +425,44 @@
   top: 17%;
   transform: rotate(-5deg);
 }
-.projects-grid .project-image.showcase-sdo {
+.projects-grid .project-image.showcase-sdo,
+.projects-grid .project-image.showcase-stitch {
   aspect-ratio: 1.15;
 }
-.showcase-sdo .device-desktop {
+.showcase-sdo .device-desktop,
+.showcase-stitch .device-desktop {
   width: 72%;
   padding: 0.7cqw;
-  box-shadow: none;
-}
-.showcase-stitch .device-desktop {
   box-shadow: none;
 }
 .showcase-sdo .device-desktop::after,
 .showcase-stitch .device-desktop::after {
   content: none;
 }
-.showcase-sdo .browser-chrome {
+.showcase-sdo .browser-chrome,
+.showcase-stitch .browser-chrome {
   height: 3.5cqw;
   gap: 0.7cqw;
   padding: 0 1cqw 0.7cqw;
 }
-.showcase-sdo .browser-chrome i {
+.showcase-sdo .browser-chrome i,
+.showcase-stitch .browser-chrome i {
   width: 0.8cqw;
   height: 0.8cqw;
 }
-.showcase-sdo .browser-chrome span {
+.showcase-sdo .browser-chrome span,
+.showcase-stitch .browser-chrome span {
   margin-left: 1.3cqw;
   font-size: 1.3cqw;
 }
-.showcase-sdo .device-back {
+.showcase-sdo .device-back,
+.showcase-stitch .device-back {
   left: 5%;
   top: 8%;
   transform: rotate(-5deg);
 }
-.showcase-sdo .device-front {
+.showcase-sdo .device-front,
+.showcase-stitch .device-front {
   right: 5%;
   top: 34%;
   transform: rotate(5deg);
