@@ -234,6 +234,11 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.03em;
+  transition:
+    transform 220ms var(--ease-enter),
+    background-color 180ms,
+    border-color 180ms,
+    box-shadow 220ms;
 }
 .project-links {
   display: flex;
@@ -256,21 +261,77 @@
   text-decoration: none;
   transition:
     background-color 180ms,
-    color 180ms;
+    color 180ms,
+    transform 220ms var(--ease-enter),
+    box-shadow 220ms;
+  touch-action: manipulation;
 }
 .project-links svg {
   width: 30px;
   height: 30px;
-}
-.project-links a:hover {
-  color: #6d2843;
+  transition: transform 260ms var(--ease-enter);
 }
 .project-links a:focus-visible {
+  background: #f6dce7;
+  color: #6d2843;
   outline: 3px solid var(--color-berry);
   outline-offset: 4px;
 }
+@media (hover: hover) and (pointer: fine) {
+  .project-tags li:hover {
+    background: #e3d2f2;
+    border-color: #ad8bca;
+    box-shadow: 0 4px 10px #60447720;
+    transform: translateY(-4px) rotate(-2deg);
+  }
+  .project-tags li:nth-child(even):hover {
+    transform: translateY(-4px) rotate(2deg);
+  }
+  .project-links a:hover {
+    background: #f6dce7;
+    color: #6d2843;
+    box-shadow: 0 5px 12px #9b3e6125;
+    transform: translateY(-4px);
+  }
+  .project-links a:hover svg {
+    transform: rotate(-8deg) scale(1.08);
+  }
+  .project-links a:nth-child(even):hover svg {
+    transform: rotate(8deg) scale(1.08);
+  }
+}
+.project-links a:active {
+  transform: translateY(1px) scale(0.92);
+  box-shadow: none;
+}
+.project-tags li:active {
+  transform: scale(0.96);
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-tags li,
+  .project-links a,
+  .project-links svg {
+    transition: none;
+  }
+  .project-tags li:hover,
+  .project-tags li:nth-child(even):hover,
+  .project-tags li:active,
+  .project-links a:hover,
+  .project-links a:active,
+  .project-links a:hover svg,
+  .project-links a:nth-child(even):hover svg {
+    transform: none;
+  }
+}
 
 /* Project cards inspired by the layered screen compositions in the reference. */
+@media (min-width: 601px) {
+  .projects-grid .project-card-loops {
+    grid-template-columns: minmax(0, 400px) minmax(0, 600px);
+    justify-content: center;
+    column-gap: clamp(24px, 3vw, 40px);
+  }
+}
 .projects-grid .project-image.project-showcase {
   position: relative;
   display: block;
@@ -434,15 +495,15 @@
 }
 .showcase-phones .device-back {
   z-index: 1;
-  left: 6%;
+  left: 13%;
   top: 17%;
-  transform: rotate(-9deg);
+  transform: rotate(-6deg);
 }
 .showcase-phones .device-middle {
   z-index: 1;
-  right: 6%;
+  right: 13%;
   top: 17%;
-  transform: rotate(9deg);
+  transform: rotate(6deg);
 }
 .showcase-phones .device-front {
   z-index: 2;
