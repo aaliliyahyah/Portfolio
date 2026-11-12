@@ -280,7 +280,7 @@
 }
 
 /* Center the portrait in the gap between “creative” and “developer”. */
-@media (min-width: 701px) {
+@media (min-width: 961px) {
   .cover-portrait {
     left: 46%;
   }
@@ -306,7 +306,7 @@
 .cover-aside .cover-facts {
   position: static;
 }
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .cover-aside {
     position: relative;
     inset: auto;
@@ -673,6 +673,28 @@
 .project-showcase:focus-visible {
   outline: 3px solid var(--color-berry);
   outline-offset: 6px;
+}
+
+/* Stack the cover on phones and small tablets. */
+@media (max-width: 960px) {
+  .cover-hero {
+    min-height: calc(100svh - var(--header-height, 70px));
+    padding-top: calc(var(--header-height, 70px) + 24px);
+    overflow: visible;
+  }
+  .cover-masthead,
+  .cover-intro,
+  .cover-aside {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .cover-large {
+    white-space: normal;
+  }
+  .cover-aside .cover-facts div {
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
 }
 
 /* Keep narrow layouts readable without shrinking text or page-wide scrolling. */

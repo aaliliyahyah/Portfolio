@@ -201,7 +201,7 @@
     box-shadow 250ms;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .cover-portrait {
     height: auto;
     width: min(75%, 320px);

@@ -106,7 +106,7 @@
 .cover-portrait {
   animation: portrait-print 600ms 180ms both;
 }
-@media (max-width: 1000px) and (min-width: 701px) {
+@media (max-width: 1000px) and (min-width: 961px) {
   .cover-intro {
     width: 25%;
     font-size: 14px;
@@ -122,7 +122,7 @@
     height: 65%;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .cover-hero {
     height: auto;
     min-height: 100svh;
@@ -342,7 +342,7 @@
     padding: 10px 20px 30px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .cover-hero {
     height: auto;
     padding-top: 88px;
@@ -387,7 +387,7 @@
     transform: translateY(-4px);
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .cover-portrait {
     transform: none !important;
   }
