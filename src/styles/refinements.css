@@ -311,25 +311,6 @@
   transform: scale(0.96);
 }
 
-.project-tags li,
-.project-links a,
-.project-links svg {
-  @variant motion-reduce {
-    transition: none;
-  }
-}
-.project-tags li:hover,
-.project-tags li:nth-child(even):hover,
-.project-tags li:active,
-.project-links a:hover,
-.project-links a:active,
-.project-links a:hover svg,
-.project-links a:nth-child(even):hover svg {
-  @variant motion-reduce {
-    transform: none;
-  }
-}
-
 /* Project cards inspired by the layered screen compositions in the reference. */
 @media (min-width: 601px) {
   .projects-grid .project-card-loops {
@@ -540,41 +521,19 @@
 }
 @media (any-hover: hover) and (any-pointer: fine) {
   .project-showcase:hover .device-back {
-    @variant motion-safe {
-      translate: -4px -8px;
-    }
+    translate: -4px -8px;
   }
   .project-showcase:hover .device-middle {
-    @variant motion-safe {
-      translate: 4px -8px;
-    }
+    translate: 4px -8px;
   }
   .project-showcase:hover .device-front {
-    @variant motion-safe {
-      translate: 4px -12px;
-    }
+    translate: 4px -12px;
   }
   .project-showcase:hover .showcase-phones .device-front {
-    @variant motion-safe {
-      translate: 0 -12px;
-    }
+    translate: 0 -12px;
   }
 }
 .project-showcase:focus-visible {
   outline: 3px solid var(--color-berry);
   outline-offset: 6px;
-}
-
-.showcase-devices,
-.device-desktop,
-.device-phone {
-  @variant motion-reduce {
-    transition: none;
-  }
-}
-.project-showcase:hover .showcase-devices,
-.project-showcase:focus-visible .showcase-devices {
-  @variant motion-reduce {
-    transform: none;
-  }
 }

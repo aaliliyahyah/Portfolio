@@ -168,14 +168,10 @@
 }
 
 .toolkit-terminal.is-in-view .console-cursor {
-  @variant motion-safe {
-    animation: console-blink 1.2s step-end 4;
-  }
+  animation: console-blink 1.2s step-end 4;
 }
 .toolkit-grid.is-in-view .toolkit-meter span {
-  @variant motion-safe {
-    animation: toolkit-load 700ms var(--card-delay) var(--ease-enter) both;
-  }
+  animation: toolkit-load 700ms var(--card-delay) var(--ease-enter) both;
 }
 @media (max-width: 1000px) {
   .toolkit-grid {
@@ -200,15 +196,6 @@
   }
   .toolkit-console b {
     min-width: 60px;
-  }
-}
-
-.toolkit-watermark,
-.toolkit-icon,
-.toolkit-meter span {
-  @variant motion-reduce {
-    transform: none !important;
-    transition: none;
   }
 }
 

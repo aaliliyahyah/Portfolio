@@ -188,16 +188,7 @@
 }
 
 .photocard-inner {
-  @variant motion-safe {
-    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-}
-
-.photocard-motion {
-  @variant motion-reduce {
-    transform: none;
-    transition: none;
-  }
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .contact-copy h2 {
   font-size: clamp(3.25rem, 7.5vw, 6.5rem);
@@ -220,15 +211,6 @@
   }
   .cover-facts {
     margin-top: auto;
-  }
-}
-
-.header-flower,
-.toolkit-card {
-  @variant motion-reduce {
-    transform: none !important;
-    translate: none !important;
-    transition: none;
   }
 }
 
@@ -277,19 +259,13 @@
 }
 
 .toolkit-card:focus-visible .toolkit-icon {
-  @variant motion-safe {
-    transform: scale(1.18);
-  }
+  transform: scale(1.18);
 }
 .toolkit-card:focus-visible .toolkit-watermark {
-  @variant motion-safe {
-    transform: translate(-6px, -6px) rotate(-8deg);
-  }
+  transform: translate(-6px, -6px) rotate(-8deg);
 }
 .toolkit-card:focus-visible::before {
-  @variant motion-safe {
-    animation: card-sweep 650ms var(--ease-enter);
-  }
+  animation: card-sweep 650ms var(--ease-enter);
 }
 @media (any-hover: hover) and (any-pointer: fine) {
   .toolkit-card:hover::after {
@@ -298,19 +274,13 @@
 }
 @media (any-hover: hover) and (any-pointer: fine) {
   .toolkit-card:hover .toolkit-icon {
-    @variant motion-safe {
-      transform: scale(1.18);
-    }
+    transform: scale(1.18);
   }
   .toolkit-card:hover .toolkit-watermark {
-    @variant motion-safe {
-      transform: translate(-6px, -6px) rotate(-8deg);
-    }
+    transform: translate(-6px, -6px) rotate(-8deg);
   }
   .toolkit-card:hover::before {
-    @variant motion-safe {
-      animation: card-sweep 650ms var(--ease-enter);
-    }
+    animation: card-sweep 650ms var(--ease-enter);
   }
 }
 

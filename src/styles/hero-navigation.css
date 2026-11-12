@@ -91,30 +91,20 @@
 .cover-large > span,
 .cover-intro,
 .cover-facts {
-  @variant motion-safe {
-    animation: cover-print 650ms steps(7, end) both;
-  }
+  animation: cover-print 650ms steps(7, end) both;
 }
 .cover-large > span:first-child {
-  @variant motion-safe {
-    animation-delay: 120ms;
-  }
+  animation-delay: 120ms;
 }
 .cover-large > span:last-child {
-  @variant motion-safe {
-    animation-delay: 240ms;
-  }
+  animation-delay: 240ms;
 }
 .cover-intro,
 .cover-facts {
-  @variant motion-safe {
-    animation-delay: 500ms;
-  }
+  animation-delay: 500ms;
 }
 .cover-portrait {
-  @variant motion-safe {
-    animation: portrait-print 600ms 180ms both;
-  }
+  animation: portrait-print 600ms 180ms both;
 }
 @media (max-width: 1000px) and (min-width: 701px) {
   .cover-intro {
@@ -361,9 +351,7 @@
 }
 
 .header-menu[open] {
-  @variant motion-safe {
-    animation: sheet-open 250ms var(--ease-enter);
-  }
+  animation: sheet-open 250ms var(--ease-enter);
 }
 
 /* Pointer and link interactions */

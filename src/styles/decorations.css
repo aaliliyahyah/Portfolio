@@ -20,24 +20,18 @@
 }
 
 .toolkit-card:focus-visible {
-  @variant motion-safe {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #99486420;
+  z-index: 2;
+}
+@media (any-hover: hover) and (any-pointer: fine) {
+  .toolkit-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 28px #99486420;
     z-index: 2;
   }
-}
-@media (any-hover: hover) and (any-pointer: fine) {
-  .toolkit-card:hover {
-    @variant motion-safe {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px #99486420;
-      z-index: 2;
-    }
-  }
   .toolkit-card:nth-child(even):hover {
-    @variant motion-safe {
-      transform: translateY(-5px);
-    }
+    transform: translateY(-5px);
   }
 }
 
@@ -173,9 +167,7 @@ body,
 }
 @media (any-hover: hover) and (any-pointer: fine) {
   .background-spotlight.is-active {
-    @variant motion-safe {
-      opacity: 1;
-    }
+    opacity: 1;
   }
 }
 
@@ -195,31 +187,4 @@ body,
 }
 .contact-address a {
   overflow-wrap: anywhere;
-}
-
-/* A visible choice for visitors whose device disables animations. */
-.motion-control:not([hidden]) {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-top: 16px;
-  color: var(--color-berry);
-  font-size: 12px;
-}
-.motion-control select {
-  max-width: 100%;
-  border: 1px solid currentColor;
-  border-radius: 4px;
-  padding: 4px 6px;
-  background: var(--color-paper);
-  font: inherit;
-  color: inherit;
-}
-.motion-control select:focus-visible {
-  outline: 2px solid var(--color-berry);
-  outline-offset: 3px;
-}
-#motion-status {
-  flex-basis: 100%;
 }

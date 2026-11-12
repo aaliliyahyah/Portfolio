@@ -122,9 +122,7 @@ nav a {
 }
 
 .scroll-enter {
-  @variant motion-safe {
-    animation: scroll-enter 600ms var(--entrance-delay, 0ms) var(--ease-enter) backwards;
-  }
+  animation: scroll-enter 600ms var(--entrance-delay, 0ms) var(--ease-enter) backwards;
 }
 
 @keyframes scroll-enter {
@@ -135,14 +133,6 @@ nav a {
   to {
     opacity: 1;
     transform: var(--entrance-transform, translateY(0));
-  }
-}
-
-.button,
-.project-image img,
-.js-menu nav {
-  @variant motion-reduce {
-    transform: none !important;
   }
 }
 

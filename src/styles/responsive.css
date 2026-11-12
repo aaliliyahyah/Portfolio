@@ -214,31 +214,6 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion='full']) {
-    scroll-behavior: auto;
-  }
-}
-html[data-motion='reduced'] {
-  scroll-behavior: auto;
-}
-* {
-  @variant motion-reduce {
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-*::before {
-  @variant motion-reduce {
-    animation: none !important;
-  }
-}
-*::after {
-  @variant motion-reduce {
-    animation: none !important;
-  }
-}
-
 @keyframes menu-in {
   from {
     opacity: 0;

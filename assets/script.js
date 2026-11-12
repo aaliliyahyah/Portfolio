@@ -1,42 +1,11 @@
 // Shared references and user preferences.
 const menuButton = document.querySelector('.menu-toggle');
 const menuDialog = document.querySelector('#mobile-menu');
-const deviceMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const precisePointer = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
-const motionPreference = new EventTarget();
-Object.defineProperty(motionPreference, 'matches', {
-  get: () => {
-    const choice = document.documentElement.dataset.motion;
-    return choice === 'reduced' || (choice !== 'full' && deviceMotionPreference.matches);
-  },
-});
 
 function watchMedia(query, listener) {
   if (typeof query.addEventListener === 'function') query.addEventListener('change', listener);
   else query.addListener(listener);
-}
-
-function initMotionPreference() {
-  const control = document.querySelector('#motion-setting');
-  const status = document.querySelector('#motion-status');
-  control.value = document.documentElement.dataset.motion || 'system';
-  control.closest('label').hidden = false;
-  function updateMotion() {
-    status.textContent = motionPreference.matches ? 'Reduced motion is on.' : 'Animations are on.';
-    motionPreference.dispatchEvent(new Event('change'));
-  }
-  control.addEventListener('change', () => {
-    if (control.value === 'system') delete document.documentElement.dataset.motion;
-    else document.documentElement.dataset.motion = control.value;
-    try {
-      localStorage.setItem('portfolio-motion', control.value);
-    } catch {
-      // Keep the choice for this visit when storage is unavailable.
-    }
-    updateMotion();
-  });
-  watchMedia(deviceMotionPreference, updateMotion);
-  updateMotion();
 }
 
 function initNavigation() {
@@ -208,8 +177,7 @@ function initScrollAnimations() {
       if (inView.has(target)) return;
       inView.add(target);
       // Replay only on downward entries; upward entries stay fully visible.
-      if (!scrollingDown || motionPreference.matches || target.contains(document.activeElement))
-        return;
+      if (!scrollingDown || target.contains(document.activeElement)) return;
       const replaying = entranceAnimations.has(target);
       finishEntrance(target);
       if (replaying) void target.offsetWidth;
@@ -267,7 +235,6 @@ function initScrollAnimations() {
       if (target.contains(event.target)) finishEntrance(target);
     });
   });
-  motionPreference.addEventListener('change', finishMotion);
   window.addEventListener('hashchange', finishMotion);
 }
 
@@ -284,8 +251,7 @@ function initPointerEffects() {
     };
     interactiveResets.push(reset);
     surface.addEventListener('pointermove', (event) => {
-      if (motionPreference.matches || !precisePointer.matches || event.pointerType === 'touch')
-        return;
+      if (!precisePointer.matches || event.pointerType === 'touch') return;
       const bounds = surface.getBoundingClientRect();
       const x = Math.max(-0.5, Math.min(0.5, (event.clientX - bounds.left) / bounds.width - 0.5));
       const y = Math.max(-0.5, Math.min(0.5, (event.clientY - bounds.top) / bounds.height - 0.5));
@@ -318,7 +284,6 @@ function initPointerEffects() {
   function resetInteractiveMotion() {
     interactiveResets.forEach((reset) => reset());
   }
-  motionPreference.addEventListener('change', resetInteractiveMotion);
   watchMedia(precisePointer, resetInteractiveMotion);
   window.addEventListener('blur', resetInteractiveMotion);
 }
@@ -363,12 +328,7 @@ function initBackgroundSpotlight() {
   document.addEventListener(
     'pointermove',
     (event) => {
-      if (
-        event.pointerType !== 'mouse' ||
-        motionPreference.matches ||
-        !precisePointer.matches ||
-        menuDialog?.open
-      ) {
+      if (event.pointerType !== 'mouse' || !precisePointer.matches || menuDialog?.open) {
         hideSpotlight();
         return;
       }
@@ -401,13 +361,11 @@ function initBackgroundSpotlight() {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) hideSpotlight();
   });
-  motionPreference.addEventListener('change', hideSpotlight);
   watchMedia(precisePointer, hideSpotlight);
   menuButton?.addEventListener('click', hideSpotlight);
 }
 
 // The script is deferred, so the document is ready before features initialize.
-initMotionPreference();
 initNavigation();
 initContactForm();
 initPhotocard();
