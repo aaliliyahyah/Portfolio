@@ -675,7 +675,7 @@
   outline-offset: 6px;
 }
 
-/* Stack the cover on phones and small tablets. */
+/* Stack the cover and academic entries on phones and small tablets. */
 @media (max-width: 960px) {
   .cover-hero {
     min-height: calc(100svh - var(--header-height, 70px));
@@ -694,6 +694,53 @@
   .cover-aside .cover-facts div {
     flex-wrap: wrap;
     gap: 4px 16px;
+  }
+  .education-table,
+  .education-table tbody,
+  .education-table tbody tr,
+  .education-table tbody th,
+  .education-table tbody td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .education-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .education-table tbody tr {
+    padding: 20px;
+  }
+  .education-table tbody tr + tr {
+    border-top: 1px solid #e1d1dd;
+  }
+  .education-table tbody th,
+  .education-table tbody td {
+    padding: 0;
+    border: 0;
+    overflow-wrap: anywhere;
+  }
+  .education-table tbody td {
+    margin-top: 16px;
+  }
+  .education-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-berry);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .education-award {
+    max-width: 100%;
+  }
+  .education-award > span {
+    flex-shrink: 0;
   }
 }
 
