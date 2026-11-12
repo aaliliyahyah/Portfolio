@@ -371,12 +371,22 @@
   font-size: 13px;
   font-weight: 600;
 }
+.hero-socials {
+  gap: 12px;
+}
+.hero-socials .social-placeholder > svg,
+.hero-socials .social-monogram {
+  display: block;
+  transition: transform 260ms var(--ease-enter);
+}
+.hero-socials a.social-placeholder,
 .project-links a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
+  flex: 0 0 44px;
   border: 0;
   border-radius: 4px;
   background: transparent;
@@ -394,6 +404,7 @@
   height: 30px;
   transition: transform 260ms var(--ease-enter);
 }
+.hero-socials a.social-placeholder:focus-visible,
 .project-links a:focus-visible {
   background: #f6dce7;
   color: #6d2843;
@@ -410,19 +421,25 @@
   .project-tags li:nth-child(even):hover {
     transform: translateY(-4px) rotate(2deg);
   }
+  .hero-socials a.social-placeholder:hover,
   .project-links a:hover {
     background: #f6dce7;
     color: #6d2843;
     box-shadow: 0 5px 12px #9b3e6125;
     transform: translateY(-4px);
   }
+  .hero-socials a.social-placeholder:hover > svg,
+  .hero-socials a.social-placeholder:hover .social-monogram,
   .project-links a:hover svg {
     transform: rotate(-8deg) scale(1.08);
   }
+  .hero-socials a.social-placeholder:nth-child(even):hover > svg,
+  .hero-socials a.social-placeholder:nth-child(even):hover .social-monogram,
   .project-links a:nth-child(even):hover svg {
     transform: rotate(8deg) scale(1.08);
   }
 }
+.hero-socials a.social-placeholder:active,
 .project-links a:active {
   transform: translateY(1px) scale(0.92);
   box-shadow: none;
