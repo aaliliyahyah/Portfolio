@@ -90,6 +90,58 @@ body,
   background-image: radial-gradient(circle, #99486429 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+/* A keepsake note with washi tape, ruled paper, and a fine inset frame. */
+.sticky-note {
+  padding: 34px 24px 28px;
+  border: 1px solid #70967b38;
+  background-color: var(--color-mint);
+  background-image: repeating-linear-gradient(transparent 0 27px, #70967b12 27px 28px);
+  box-shadow:
+    4px 6px 0 #bbd9c64d,
+    0 10px 24px #382c400a;
+}
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 38px);
+  width: 76px;
+  height: 25px;
+  border-inline: 2px dashed #fff9fc99;
+  background: repeating-linear-gradient(135deg, #d8c8e8bf 0 5px, #e7defac9 5px 10px);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+.sticky-note::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #70967b29;
+  pointer-events: none;
+}
+.note-eyebrow {
+  margin-bottom: 18px;
+  color: #647a6c;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.sticky-note blockquote {
+  font-size: 23px;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+.sticky-note blockquote em {
+  color: var(--color-berry);
+}
+.sticky-note .hand-note {
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px dashed #70967b59;
+  color: #596e60;
+}
 .hero-backdrop {
   position: relative;
   isolation: isolate;
