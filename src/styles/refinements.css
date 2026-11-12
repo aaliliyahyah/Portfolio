@@ -342,7 +342,7 @@
   min-height: 0;
   aspect-ratio: 1.4;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   border: 0;
   border-radius: 6px;
@@ -363,6 +363,12 @@
   z-index: 1;
   inset: 0;
   pointer-events: none;
+  transform: scale(1);
+  transition: transform 350ms var(--ease-enter);
+}
+.device-desktop,
+.device-phone {
+  transition: translate 400ms var(--ease-enter);
 }
 .device-desktop {
   position: absolute;
@@ -372,7 +378,6 @@
   border: 1px solid #ffffff8c;
   border-radius: 10px;
   box-shadow: 0 20px 32px #0005;
-  transition: translate 400ms var(--ease-enter);
 }
 .device-desktop::after {
   content: '';
@@ -478,7 +483,6 @@
     inset 0 0 0 1px #ffffff30,
     0 1.5cqw 2.5cqw #42303926,
     0 0.3cqw 0.6cqw #42303920;
-  transition: translate 400ms var(--ease-enter);
 }
 .device-phone::before {
   content: '';
@@ -524,16 +528,24 @@
     0 0.4cqw 1cqw #42303926;
 }
 @media (hover: hover) and (pointer: fine) {
-  .project-card:hover .device-back {
+  .project-showcase:hover .showcase-devices {
+    transform: scale(1.05);
+  }
+}
+.project-showcase:focus-visible .showcase-devices {
+  transform: scale(1.05);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-showcase:hover .device-back {
     translate: -4px -8px;
   }
-  .project-card:hover .device-middle {
+  .project-showcase:hover .device-middle {
     translate: 4px -8px;
   }
-  .project-card:hover .device-front {
+  .project-showcase:hover .device-front {
     translate: 4px -12px;
   }
-  .project-card:hover .showcase-phones .device-front {
+  .project-showcase:hover .showcase-phones .device-front {
     translate: 0 -12px;
   }
 }
@@ -542,14 +554,13 @@
   outline-offset: 6px;
 }
 @media (prefers-reduced-motion: reduce) {
+  .showcase-devices,
   .device-desktop,
   .device-phone {
     transition: none;
   }
-  .project-card:hover .device-back,
-  .project-card:hover .device-middle,
-  .project-card:hover .device-front,
-  .project-card:hover .showcase-phones .device-front {
-    translate: none;
+  .project-showcase:hover .showcase-devices,
+  .project-showcase:focus-visible .showcase-devices {
+    transform: none;
   }
 }
