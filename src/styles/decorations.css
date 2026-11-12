@@ -53,6 +53,19 @@
   align-items: center;
   justify-content: flex-start;
 }
+.social-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-berry);
+}
+.social-placeholder svg {
+  width: 28px;
+  height: 28px;
+}
+.social-monogram {
+  font: 800 25px/28px sans-serif;
+}
 .cover-intro .hero-project-link {
   display: inline-block;
   margin-top: 20px;
