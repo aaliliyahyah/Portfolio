@@ -753,17 +753,28 @@
     flex-wrap: wrap;
     align-items: flex-start;
   }
-  .heading-row > div {
+  .heading-row > div,
+  .toolkit-terminal,
+  .toolkit-console {
     min-width: 0;
   }
   .toolkit-terminal,
   .toolkit-console {
-    min-width: 0;
     padding: 18px;
     overflow-wrap: anywhere;
   }
   .toolkit-terminal h3 {
     font-size: clamp(14px, 4vw, 18px);
+  }
+  .contact-address {
+    gap: 12px;
+  }
+  .contact-mail-icon {
+    flex-shrink: 0;
+  }
+  .button {
+    max-width: 100%;
+    white-space: normal;
   }
   .about-layout {
     grid-template-columns: minmax(0, 1fr);
