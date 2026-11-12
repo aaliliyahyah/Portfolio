@@ -87,7 +87,7 @@ body,
 .hero-backdrop,
 .section,
 .header-menu {
-  background-image: radial-gradient(circle, #99486429 1px, transparent 1px);
+  background-image: radial-gradient(circle, #99486440 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -153,7 +153,7 @@ body,
   pointer-events: none;
   border-radius: inherit;
   opacity: 0;
-  background-image: radial-gradient(circle, #994864 1px, transparent 1px);
+  background-image: radial-gradient(circle, #803950 1px, transparent 1px);
   background-size: 20px 20px;
   -webkit-mask-image: radial-gradient(
     circle 300px at var(--spot-x, -999px) var(--spot-y, -999px),
