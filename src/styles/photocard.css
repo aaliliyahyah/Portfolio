@@ -24,23 +24,6 @@
   gap: 18px;
   align-items: center;
 }
-.social-placeholder {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: var(--color-berry);
-}
-.social-placeholder svg {
-  width: 28px;
-  height: 28px;
-}
-.social-placeholder small {
-  font-size: 10px;
-}
-.social-monogram {
-  font: 800 25px/28px sans-serif;
-}
 .about-photo img {
   aspect-ratio: 1;
   object-fit: cover;

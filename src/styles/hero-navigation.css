@@ -291,10 +291,6 @@
   padding: 10px 0;
   letter-spacing: -0.04em;
 }
-.mobile-links a::after {
-  content: '↗';
-  color: var(--color-berry);
-}
 .mobile-links a[aria-current] {
   color: var(--color-berry);
 }
@@ -371,20 +367,20 @@
 .project-image img {
   transition: transform 300ms var(--ease-enter);
 }
-.cover-intro a span,
-.mobile-links a::after,
-.back-top span {
+.hero-project-link .icon,
+.mobile-links .icon,
+.back-top .icon {
   display: inline-block;
   transition: transform 180ms var(--ease-enter);
 }
-.cover-intro a:focus-visible span {
+.hero-project-link:focus-visible .icon {
   transform: translate(3px, -3px);
 }
 @media (any-hover: hover) and (any-pointer: fine) {
-  .cover-intro a:hover span {
+  .hero-project-link:hover .icon {
     transform: translate(3px, -3px);
   }
-  .mobile-links a:hover::after {
+  .mobile-links a:hover .icon {
     transform: translate(4px, -4px);
   }
   .back-top:hover span {

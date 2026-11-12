@@ -29,6 +29,8 @@ I designed my portfolio with matching cherry blossom decorations, a Cupid heart 
 
 ## Deployment
 
+Menu controls, social links, project links, and toolkit cards use matching inline SVG icons with consistent sizing and rounded strokes. The mobile menu shares the desktop navigation’s paper, berry, and lavender palette, with matching buttons and clearly marked active links.
+
 On mobile, the full-screen menu supports taps, keyboard navigation, Escape, and a fallback for browsers without native dialogs. About and project sections stack on phone screens, and form fields retain readable text sizes.
 
 Animations are always enabled, regardless of device preferences or previously saved motion settings. Mouse effects also support touchscreen laptops with an attached mouse or trackpad. Scroll entrances use CSS animations, with a scroll fallback when IntersectionObserver is unavailable, so they also work without the Web Animations API. Run `npm test` for animation compatibility regression checks.
