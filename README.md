@@ -27,4 +27,8 @@ My contact form opens a prefilled Gmail draft in a new tab addressed to aaliyahs
 
 I designed my portfolio with matching cherry blossom decorations, a Cupid heart cursor with an arrowhead click point, pastel colors, fixed cherry blossom navigation, a full-screen hero, toolkit hover effects, and downward-only scroll entrances. Project photo compositions gently enlarge when hovered or focused with the keyboard, then return to their original size. On hover, the individual screens also keep their original upward and sideways movement, settling back when the pointer leaves. I added an About Me photocard that visitors can tap or click to reveal my portrait, then tap again to turn it back. I also support Enter and Space on the button. The photocard gently lifts and follows precise pointers with a tilt on either face, returning to rest when the pointer leaves. My dotted background spotlight responds to precise pointers, while touch and reduced-motion users see a static grid. I keep all content visible without JavaScript and let reduced-motion users flip the card without animation; reduced-motion users also see no hover enlargement or tilt.
 
-I can publish `index.html` and `assets/` to a static host. I haven't configured deployment yet.
+## Deployment
+
+I deploy to Vercel using the repository root as the project's Root Directory. The committed `vercel.json` selects the Other framework preset, runs `npm run build` to generate the CSS, and serves the project root (`.`), which contains `index.html` and `assets/`. The build does not create a `public/` directory.
+
+After pushing these files to the connected Git branch, Vercel can deploy the new commit with these settings automatically.
