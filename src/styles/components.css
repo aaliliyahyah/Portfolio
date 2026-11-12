@@ -709,7 +709,7 @@
   }
   .form-footnote {
     text-align: center;
-    font-size: 9px;
+    font-size: 11px;
     color: #796b78;
   }
   button:disabled {
@@ -728,7 +728,7 @@
     gap: 20px;
   }
   .footer-main > p {
-    font-size: 11px;
+    font-size: 13px;
     color: #796b78;
   }
   .footer-main > p span {
