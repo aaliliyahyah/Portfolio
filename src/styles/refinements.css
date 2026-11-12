@@ -746,6 +746,15 @@
 
 /* Keep narrow layouts readable without shrinking text or page-wide scrolling. */
 @media (max-width: 767px) {
+  .toolkit-terminal,
+  .toolkit-console {
+    min-width: 0;
+    padding: 18px;
+    overflow-wrap: anywhere;
+  }
+  .toolkit-terminal h3 {
+    font-size: clamp(14px, 4vw, 18px);
+  }
   .about-layout {
     grid-template-columns: minmax(0, 1fr);
   }
