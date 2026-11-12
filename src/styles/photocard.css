@@ -73,12 +73,16 @@
   outline: 2px dashed #a59bb4;
   outline-offset: 5px;
 }
+.photocard-motion,
 .photocard-inner {
   display: block;
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+}
+.photocard-motion {
+  transition: transform 200ms var(--ease-enter);
 }
 .photocard-cover,
 .photocard-photo {
@@ -185,6 +189,12 @@
 @media (prefers-reduced-motion: no-preference) {
   .photocard-inner {
     transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photocard-motion {
+    transform: none;
+    transition: none;
   }
 }
 .contact-copy h2 {

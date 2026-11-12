@@ -231,7 +231,7 @@ function initScrollAnimations() {
 function initPointerEffects() {
   // Direct manipulation is limited to precise pointers, with no animation loop at rest.
   const interactiveResets = [];
-  function followPointer(surface, target, strength, centered = false) {
+  function followPointer(surface, target, strength, { centered = false, lift = false } = {}) {
     if (!surface || !target) return;
     let frame = 0;
     const reset = () => {
@@ -250,7 +250,7 @@ function initPointerEffects() {
       frame = requestAnimationFrame(() => {
         target.style.transform = centered
           ? `translateX(-50%) translate(${x * strength}px, ${y * strength}px) rotate(${x * 2}deg)`
-          : `perspective(900px) rotateX(${-y * strength}deg) rotateY(${x * strength}deg)`;
+          : `${lift ? 'translateY(-4px) scale(1.02) ' : 'perspective(900px) '}rotateX(${-y * strength}deg) rotateY(${x * strength}deg)`;
         frame = 0;
       });
     });
@@ -261,7 +261,13 @@ function initPointerEffects() {
     document.querySelector('.cover-hero'),
     document.querySelector('.cover-portrait'),
     16,
-    true,
+    { centered: true },
+  );
+  followPointer(
+    document.querySelector('.photocard'),
+    document.querySelector('.photocard-motion'),
+    12,
+    { lift: true },
   );
   document
     .querySelectorAll('.project-image:not(.project-showcase)')
