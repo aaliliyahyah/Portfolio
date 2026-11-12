@@ -746,6 +746,16 @@
 
 /* Keep narrow layouts readable without shrinking text or page-wide scrolling. */
 @media (max-width: 767px) {
+  .site-width {
+    width: calc(100% - 32px);
+  }
+  .heading-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .heading-row > div {
+    min-width: 0;
+  }
   .toolkit-terminal,
   .toolkit-console {
     min-width: 0;
