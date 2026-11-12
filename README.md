@@ -29,6 +29,8 @@ I designed my portfolio with matching cherry blossom decorations, a Cupid heart 
 
 ## Deployment
 
+The hero's **Animations** selector follows the device setting by default. Visitors can choose **On** to enable effects even when their laptop requests reduced motion, or **Reduced** to disable them. The choice is saved locally when browser storage is available. Mouse effects also support touchscreen laptops with an attached mouse or trackpad. Scroll entrances use CSS animations, with a scroll fallback when IntersectionObserver is unavailable, so they also work without the Web Animations API. Run `npm test` for motion preference and compatibility regression checks.
+
 I deploy to Vercel using the repository root as the project's Root Directory. The committed `vercel.json` selects the Other framework preset, runs `npm run build` to generate the CSS, and serves the project root (`.`), which contains `index.html` and `assets/`. The build does not create a `public/` directory.
 
 After pushing these files to the connected Git branch, Vercel can deploy the new commit with these settings automatically.

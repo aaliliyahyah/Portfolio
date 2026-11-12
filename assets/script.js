@@ -1,8 +1,43 @@
 // Shared references and user preferences.
 const menuButton = document.querySelector('.menu-toggle');
 const menuDialog = document.querySelector('#mobile-menu');
-const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+const deviceMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const precisePointer = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
+const motionPreference = new EventTarget();
+Object.defineProperty(motionPreference, 'matches', {
+  get: () => {
+    const choice = document.documentElement.dataset.motion;
+    return choice === 'reduced' || (choice !== 'full' && deviceMotionPreference.matches);
+  },
+});
+
+function watchMedia(query, listener) {
+  if (typeof query.addEventListener === 'function') query.addEventListener('change', listener);
+  else query.addListener(listener);
+}
+
+function initMotionPreference() {
+  const control = document.querySelector('#motion-setting');
+  const status = document.querySelector('#motion-status');
+  control.value = document.documentElement.dataset.motion || 'system';
+  control.closest('label').hidden = false;
+  function updateMotion() {
+    status.textContent = motionPreference.matches ? 'Reduced motion is on.' : 'Animations are on.';
+    motionPreference.dispatchEvent(new Event('change'));
+  }
+  control.addEventListener('change', () => {
+    if (control.value === 'system') delete document.documentElement.dataset.motion;
+    else document.documentElement.dataset.motion = control.value;
+    try {
+      localStorage.setItem('portfolio-motion', control.value);
+    } catch {
+      // Keep the choice for this visit when storage is unavailable.
+    }
+    updateMotion();
+  });
+  watchMedia(deviceMotionPreference, updateMotion);
+  updateMotion();
+}
 
 function initNavigation() {
   const siteHeader = document.querySelector('.site-header');
@@ -35,7 +70,7 @@ function initNavigation() {
       document.documentElement.classList.remove('menu-visible');
       menuButton.focus({ preventScroll: true });
     });
-    window.matchMedia('(min-width: 961px)').addEventListener('change', (event) => {
+    watchMedia(window.matchMedia('(min-width: 961px)'), (event) => {
       if (event.matches && menuDialog.open) closeMenu();
     });
   }
@@ -136,96 +171,104 @@ function initPhotocard() {
 }
 
 function initScrollAnimations() {
-  // Progressive enhancement: no element is hidden until its observer is available.
-  let revealObserver;
-  const entranceAnimations = [];
+  // CSS entrances work without Element.animate() or Element.getAnimations().
+  // Content stays visible until a downward entry actually starts an animation.
+  const selector =
+    '.section-heading, .about-photo, .about-copy, .sticky-note, .toolkit-card, .toolkit-terminal, .education-panel, .project-card, .learning-goals-list li, .contact-copy, .contact-form';
+  const targets = [...document.querySelectorAll(selector)];
+  const inView = new WeakSet();
+  const entranceAnimations = new Set();
+  let previousScrollY = Math.max(0, window.scrollY);
+  let scrollingDown = false;
+
+  function finishEntrance(target) {
+    target.classList.remove('scroll-enter');
+    target.style.removeProperty('--entrance-transform');
+    target.style.removeProperty('--entrance-delay');
+    entranceAnimations.delete(target);
+  }
   function finishMotion() {
-    document.querySelectorAll('.reveal-pending').forEach((element) => {
-      element.classList.remove('reveal-pending');
-      element.classList.add('reveal-ready');
-    });
-    [...entranceAnimations].forEach((animation) => animation.finish());
+    entranceAnimations.forEach(finishEntrance);
   }
-  if ('IntersectionObserver' in window) {
-    const inView = new WeakSet();
-    let previousScrollY = Math.max(0, window.scrollY);
-    let scrollingDown = false;
-    function updateScrollDirection() {
-      const currentScrollY = Math.max(0, window.scrollY);
-      if (currentScrollY === previousScrollY) return;
-      scrollingDown = currentScrollY > previousScrollY;
-      previousScrollY = currentScrollY;
-      // Reversing direction immediately settles any entrance still in progress.
-      if (!scrollingDown) finishMotion();
-    }
-    window.addEventListener('scroll', updateScrollDirection, { passive: true });
-    const selector =
-      '.section-heading, .about-photo, .about-copy, .sticky-note, .toolkit-card, .toolkit-terminal, .education-panel, .project-card, .learning-goals-list li, .contact-copy, .contact-form';
-    revealObserver = new IntersectionObserver(
-      (entries) => {
-        updateScrollDirection();
-        const visible = entries.filter(({ target, isIntersecting }) => {
-          if (!isIntersecting) {
-            inView.delete(target);
-            return false;
-          }
-          if (inView.has(target)) return false;
-          inView.add(target);
-          return true;
-        });
-        visible.forEach(({ target }, index) => {
-          // Replay only on downward entries; upward entries stay fully visible.
-          if (
-            !scrollingDown ||
-            motionPreference.matches ||
-            target.contains(document.activeElement) ||
-            typeof target.animate !== 'function'
-          )
-            return;
-          const animations = [
-            target.animate(
-              [
-                { opacity: 0, translate: '0 28px' },
-                { opacity: 1, translate: '0 0' },
-              ],
-              {
-                duration: 600,
-                delay: Math.min(index, 3) * 65,
-                easing: 'cubic-bezier(.22,1,.36,1)',
-                fill: 'backwards',
-              },
-            ),
-          ];
-          animations.forEach((animation) => {
-            entranceAnimations.push(animation);
-            animation.addEventListener(
-              'finish',
-              () => {
-                const position = entranceAnimations.indexOf(animation);
-                if (position !== -1) entranceAnimations.splice(position, 1);
-              },
-              { once: true },
-            );
-          });
-        });
-      },
-      { threshold: 0.06, rootMargin: '0px 0px -30px 0px' },
-    );
-    document.querySelectorAll(selector).forEach((element) => {
-      if (element.getBoundingClientRect().top < window.innerHeight) inView.add(element);
-      revealObserver.observe(element);
-    });
-    document.addEventListener('focusin', (event) => {
-      const target = event.target.closest(selector);
-      if (!target) return;
-      target.getAnimations().forEach((animation) => animation.finish());
+  function updateScrollDirection() {
+    const currentScrollY = Math.max(0, window.scrollY);
+    if (currentScrollY === previousScrollY) return;
+    scrollingDown = currentScrollY > previousScrollY;
+    previousScrollY = currentScrollY;
+    if (!scrollingDown) finishMotion();
+  }
+  function reveal(entries) {
+    updateScrollDirection();
+    let stagger = 0;
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) {
+        inView.delete(target);
+        return;
+      }
+      if (inView.has(target)) return;
+      inView.add(target);
+      // Replay only on downward entries; upward entries stay fully visible.
+      if (!scrollingDown || motionPreference.matches || target.contains(document.activeElement))
+        return;
+      const replaying = entranceAnimations.has(target);
+      finishEntrance(target);
+      if (replaying) void target.offsetWidth;
+      const transform = getComputedStyle(target).transform;
+      target.style.setProperty(
+        '--entrance-transform',
+        transform === 'none' ? 'translateY(0)' : transform,
+      );
+      target.style.setProperty('--entrance-delay', `${Math.min(stagger++, 3) * 65}ms`);
+      entranceAnimations.add(target);
+      target.classList.add('scroll-enter');
     });
   }
-  motionPreference.addEventListener('change', finishMotion);
-  window.addEventListener('hashchange', () => {
-    const target = document.getElementById(window.location.hash.slice(1));
-    target?.getAnimations({ subtree: true }).forEach((animation) => animation.finish());
+  targets.forEach((target) => {
+    const bounds = target.getBoundingClientRect();
+    if (bounds.top < window.innerHeight && bounds.bottom > 0) inView.add(target);
+    target.addEventListener('animationend', (event) => {
+      if (event.target === target && event.animationName === 'scroll-enter') finishEntrance(target);
+    });
   });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(reveal, {
+      threshold: 0,
+      rootMargin: '0px 0px -30px 0px',
+    });
+    targets.forEach((target) => observer.observe(target));
+    window.addEventListener('scroll', updateScrollDirection, { passive: true });
+  } else {
+    // Older browsers still get entrances, with at most one viewport check per frame.
+    let frame = 0;
+    const checkViewport = () => {
+      frame = 0;
+      reveal(
+        targets.map((target) => {
+          const bounds = target.getBoundingClientRect();
+          return {
+            target,
+            isIntersecting: bounds.top < window.innerHeight - 30 && bounds.bottom > 0,
+          };
+        }),
+      );
+    };
+    const scheduleCheck = () => {
+      updateScrollDirection();
+      if (!frame) frame = requestAnimationFrame(checkViewport);
+    };
+    window.addEventListener('scroll', scheduleCheck, { passive: true });
+    window.addEventListener('resize', scheduleCheck);
+    checkViewport();
+  }
+  document.addEventListener('focusin', (event) => {
+    // Settle every animated ancestor so a focused field is immediately visible.
+    entranceAnimations.forEach((target) => {
+      if (target.contains(event.target)) finishEntrance(target);
+    });
+  });
+  motionPreference.addEventListener('change', finishMotion);
+  window.addEventListener('hashchange', finishMotion);
 }
 
 function initPointerEffects() {
@@ -276,7 +319,7 @@ function initPointerEffects() {
     interactiveResets.forEach((reset) => reset());
   }
   motionPreference.addEventListener('change', resetInteractiveMotion);
-  precisePointer.addEventListener('change', resetInteractiveMotion);
+  watchMedia(precisePointer, resetInteractiveMotion);
   window.addEventListener('blur', resetInteractiveMotion);
 }
 
@@ -359,11 +402,12 @@ function initBackgroundSpotlight() {
     if (document.hidden) hideSpotlight();
   });
   motionPreference.addEventListener('change', hideSpotlight);
-  precisePointer.addEventListener('change', hideSpotlight);
+  watchMedia(precisePointer, hideSpotlight);
   menuButton?.addEventListener('click', hideSpotlight);
 }
 
 // The script is deferred, so the document is ready before features initialize.
+initMotionPreference();
 initNavigation();
 initContactForm();
 initPhotocard();

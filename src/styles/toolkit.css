@@ -159,32 +159,22 @@
 .console-cursor {
   color: var(--color-lavender);
 }
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .toolkit-card:hover {
     border-color: var(--color-berry);
     background: var(--color-paper);
     box-shadow: 0 8px 24px #99486412;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .toolkit-terminal.is-in-view .console-cursor {
+
+.toolkit-terminal.is-in-view .console-cursor {
+  @variant motion-safe {
     animation: console-blink 1.2s step-end 4;
   }
-  .toolkit-grid.is-in-view .toolkit-meter span {
+}
+.toolkit-grid.is-in-view .toolkit-meter span {
+  @variant motion-safe {
     animation: toolkit-load 700ms var(--card-delay) var(--ease-enter) both;
-  }
-  @keyframes toolkit-load {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-  @keyframes console-blink {
-    50% {
-      opacity: 0;
-    }
   }
 }
 @media (max-width: 1000px) {
@@ -212,11 +202,26 @@
     min-width: 60px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .toolkit-watermark,
-  .toolkit-icon,
-  .toolkit-meter span {
+
+.toolkit-watermark,
+.toolkit-icon,
+.toolkit-meter span {
+  @variant motion-reduce {
     transform: none !important;
     transition: none;
+  }
+}
+
+@keyframes toolkit-load {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes console-blink {
+  50% {
+    opacity: 0;
   }
 }

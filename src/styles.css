@@ -15,5 +15,27 @@
 @import './styles/sections.css';
 @import './styles/refinements.css';
 
+/* Follow the device unless the visitor explicitly chooses a motion preference. */
+@custom-variant motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    :where(:root:not([data-motion='reduced']), :root:not([data-motion='reduced']) *) & {
+      @slot;
+    }
+  }
+  :where(:root[data-motion='full'], :root[data-motion='full'] *) & {
+    @slot;
+  }
+}
+@custom-variant motion-reduce {
+  @media (prefers-reduced-motion: reduce) {
+    :where(:root:not([data-motion='full']), :root:not([data-motion='full']) *) & {
+      @slot;
+    }
+  }
+  :where(:root[data-motion='reduced'], :root[data-motion='reduced'] *) & {
+    @slot;
+  }
+}
+
 @source "../index.html";
 @source "../assets/script.js";

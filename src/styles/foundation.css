@@ -1,5 +1,5 @@
 /* Custom cursor */
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   html,
   body {
     cursor:

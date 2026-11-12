@@ -76,7 +76,7 @@ nav a {
   text-underline-offset: 6px;
   text-decoration-thickness: 1px;
 }
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .project-card:hover .project-image:not(.project-showcase) img {
     transform: scale(1.025);
   }
@@ -120,23 +120,28 @@ nav a {
     font-size: 32px;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .reveal-pending {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  .reveal-ready {
-    opacity: 1;
-    transform: none;
-    transition:
-      opacity var(--motion-reveal) var(--ease-enter),
-      transform var(--motion-reveal) var(--ease-enter);
+
+.scroll-enter {
+  @variant motion-safe {
+    animation: scroll-enter 600ms var(--entrance-delay, 0ms) var(--ease-enter) backwards;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .button,
-  .project-image img,
-  .js-menu nav {
+
+@keyframes scroll-enter {
+  from {
+    opacity: 0;
+    transform: var(--entrance-transform, translateY(0)) translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: var(--entrance-transform, translateY(0));
+  }
+}
+
+.button,
+.project-image img,
+.js-menu nav {
+  @variant motion-reduce {
     transform: none !important;
   }
 }

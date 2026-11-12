@@ -86,49 +86,34 @@
 .cover-facts dd {
   margin: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .cover-small,
-  .cover-large > span,
-  .cover-intro,
-  .cover-facts {
+
+.cover-small,
+.cover-large > span,
+.cover-intro,
+.cover-facts {
+  @variant motion-safe {
     animation: cover-print 650ms steps(7, end) both;
   }
-  .cover-large > span:first-child {
+}
+.cover-large > span:first-child {
+  @variant motion-safe {
     animation-delay: 120ms;
   }
-  .cover-large > span:last-child {
+}
+.cover-large > span:last-child {
+  @variant motion-safe {
     animation-delay: 240ms;
   }
-  .cover-intro,
-  .cover-facts {
+}
+.cover-intro,
+.cover-facts {
+  @variant motion-safe {
     animation-delay: 500ms;
   }
-  .cover-portrait {
+}
+.cover-portrait {
+  @variant motion-safe {
     animation: portrait-print 600ms 180ms both;
-  }
-  @keyframes cover-print {
-    from {
-      opacity: 0;
-      clip-path: inset(0 0 100%);
-    }
-    to {
-      opacity: 1;
-      clip-path: inset(0);
-    }
-  }
-  @keyframes portrait-print {
-    0% {
-      opacity: 0;
-    }
-    30% {
-      opacity: 0.5;
-    }
-    45% {
-      opacity: 0.2;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 }
 @media (max-width: 1000px) and (min-width: 701px) {
@@ -322,7 +307,7 @@
 .menu-visible {
   overflow: hidden;
 }
-@media (hover: hover) {
+@media (any-hover: hover) {
   #main-nav a:hover,
   .menu-toggle:hover,
   .menu-close:hover {
@@ -374,19 +359,10 @@
     top: auto;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .header-menu[open] {
+
+.header-menu[open] {
+  @variant motion-safe {
     animation: sheet-open 250ms var(--ease-enter);
-  }
-  @keyframes sheet-open {
-    from {
-      opacity: 0;
-      transform: translateY(-16px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
   }
 }
 
@@ -406,7 +382,7 @@
 .cover-intro a:focus-visible span {
   transform: translate(3px, -3px);
 }
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .cover-intro a:hover span {
     transform: translate(3px, -3px);
   }
@@ -420,5 +396,40 @@
 @media (max-width: 700px) {
   .cover-portrait {
     transform: none !important;
+  }
+}
+
+@keyframes cover-print {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100%);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+@keyframes portrait-print {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes sheet-open {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

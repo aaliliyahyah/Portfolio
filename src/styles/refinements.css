@@ -108,7 +108,7 @@
 .mobile-links .nav-hello > span {
   display: none;
 }
-@media (hover: hover) {
+@media (any-hover: hover) {
   #main-nav a:hover {
     background: #eedeeb;
     color: var(--color-berry);
@@ -280,7 +280,7 @@
   outline: 3px solid var(--color-berry);
   outline-offset: 4px;
 }
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .project-tags li:hover {
     background: #e3d2f2;
     border-color: #ad8bca;
@@ -310,19 +310,22 @@
 .project-tags li:active {
   transform: scale(0.96);
 }
-@media (prefers-reduced-motion: reduce) {
-  .project-tags li,
-  .project-links a,
-  .project-links svg {
+
+.project-tags li,
+.project-links a,
+.project-links svg {
+  @variant motion-reduce {
     transition: none;
   }
-  .project-tags li:hover,
-  .project-tags li:nth-child(even):hover,
-  .project-tags li:active,
-  .project-links a:hover,
-  .project-links a:active,
-  .project-links a:hover svg,
-  .project-links a:nth-child(even):hover svg {
+}
+.project-tags li:hover,
+.project-tags li:nth-child(even):hover,
+.project-tags li:active,
+.project-links a:hover,
+.project-links a:active,
+.project-links a:hover svg,
+.project-links a:nth-child(even):hover svg {
+  @variant motion-reduce {
     transform: none;
   }
 }
@@ -527,7 +530,7 @@
     0 2.5cqw 4cqw #42303930,
     0 0.4cqw 1cqw #42303926;
 }
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .project-showcase:hover .showcase-devices {
     transform: scale(1.05);
   }
@@ -535,32 +538,43 @@
 .project-showcase:focus-visible .showcase-devices {
   transform: scale(1.05);
 }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+@media (any-hover: hover) and (any-pointer: fine) {
   .project-showcase:hover .device-back {
-    translate: -4px -8px;
+    @variant motion-safe {
+      translate: -4px -8px;
+    }
   }
   .project-showcase:hover .device-middle {
-    translate: 4px -8px;
+    @variant motion-safe {
+      translate: 4px -8px;
+    }
   }
   .project-showcase:hover .device-front {
-    translate: 4px -12px;
+    @variant motion-safe {
+      translate: 4px -12px;
+    }
   }
   .project-showcase:hover .showcase-phones .device-front {
-    translate: 0 -12px;
+    @variant motion-safe {
+      translate: 0 -12px;
+    }
   }
 }
 .project-showcase:focus-visible {
   outline: 3px solid var(--color-berry);
   outline-offset: 6px;
 }
-@media (prefers-reduced-motion: reduce) {
-  .showcase-devices,
-  .device-desktop,
-  .device-phone {
+
+.showcase-devices,
+.device-desktop,
+.device-phone {
+  @variant motion-reduce {
     transition: none;
   }
-  .project-showcase:hover .showcase-devices,
-  .project-showcase:focus-visible .showcase-devices {
+}
+.project-showcase:hover .showcase-devices,
+.project-showcase:focus-visible .showcase-devices {
+  @variant motion-reduce {
     transform: none;
   }
 }

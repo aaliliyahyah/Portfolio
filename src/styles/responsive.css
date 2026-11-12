@@ -81,16 +81,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-  @keyframes menu-in {
-    from {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 60px;
@@ -222,14 +213,39 @@
     gap: 8px;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html:not([data-motion='full']) {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
+}
+html[data-motion='reduced'] {
+  scroll-behavior: auto;
+}
+* {
+  @variant motion-reduce {
     animation: none !important;
     scroll-behavior: auto !important;
+  }
+}
+*::before {
+  @variant motion-reduce {
+    animation: none !important;
+  }
+}
+*::after {
+  @variant motion-reduce {
+    animation: none !important;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
