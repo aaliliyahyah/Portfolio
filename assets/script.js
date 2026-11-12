@@ -21,26 +21,67 @@ function initNavigation() {
   if ('ResizeObserver' in window) new ResizeObserver(updateHeaderHeight).observe(siteHeader);
   else window.addEventListener('resize', updateHeaderHeight);
 
-  if (menuButton && menuDialog && typeof menuDialog.showModal === 'function') {
+  if (menuButton && menuDialog) {
+    // Keep the full-screen sheet outside the header's backdrop-filter container.
+    document.body.append(menuDialog);
+    const nativeDialog = typeof menuDialog.showModal === 'function';
+    let returnFocus = true;
     siteHeader.classList.add('js-menu');
     menuButton.hidden = false;
-    const closeMenu = () => menuDialog.close();
-    menuButton.addEventListener('click', () => {
-      menuDialog.showModal();
-      menuButton.setAttribute('aria-expanded', 'true');
-      document.documentElement.classList.add('menu-visible');
-    });
-    menuDialog.querySelector('.menu-close').addEventListener('click', closeMenu);
-    menuDialog.addEventListener('click', (event) => {
-      if (event.target.closest('a')) closeMenu();
-    });
-    menuDialog.addEventListener('close', () => {
+
+    function settleMenu() {
+      if (menuDialog.hasAttribute('open')) return;
       menuButton.setAttribute('aria-expanded', 'false');
       document.documentElement.classList.remove('menu-visible');
-      menuButton.focus({ preventScroll: true });
+      if (returnFocus) menuButton.focus({ preventScroll: true });
+    }
+    function closeMenu({ restoreFocus = true } = {}) {
+      if (!menuDialog.hasAttribute('open')) return;
+      returnFocus = restoreFocus;
+      if (nativeDialog) menuDialog.close();
+      else menuDialog.removeAttribute('open');
+      settleMenu();
+    }
+    menuButton.addEventListener('click', () => {
+      if (menuDialog.hasAttribute('open')) {
+        closeMenu();
+        return;
+      }
+      returnFocus = true;
+      if (nativeDialog) menuDialog.showModal();
+      else {
+        menuDialog.setAttribute('open', '');
+        menuDialog.setAttribute('role', 'dialog');
+        menuDialog.setAttribute('aria-modal', 'true');
+      }
+      menuButton.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('menu-visible');
+      menuDialog.querySelector('.menu-close').focus({ preventScroll: true });
+    });
+    menuDialog.querySelector('.menu-close').addEventListener('click', () => closeMenu());
+    menuDialog.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu({ restoreFocus: false });
+    });
+    menuDialog.addEventListener('close', settleMenu);
+    menuDialog.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu();
+      } else if (event.key === 'Tab' && !nativeDialog) {
+        const controls = [...menuDialog.querySelectorAll('a[href], button')];
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     });
     watchMedia(window.matchMedia('(min-width: 961px)'), (event) => {
-      if (event.matches && menuDialog.open) closeMenu();
+      if (event.matches) closeMenu({ restoreFocus: false });
     });
   }
 
@@ -328,7 +369,11 @@ function initBackgroundSpotlight() {
   document.addEventListener(
     'pointermove',
     (event) => {
-      if (event.pointerType !== 'mouse' || !precisePointer.matches || menuDialog?.open) {
+      if (
+        event.pointerType !== 'mouse' ||
+        !precisePointer.matches ||
+        menuDialog?.hasAttribute('open')
+      ) {
         hideSpotlight();
         return;
       }

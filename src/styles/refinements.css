@@ -537,3 +537,77 @@
   outline: 3px solid var(--color-berry);
   outline-offset: 6px;
 }
+
+/* Keep narrow layouts readable without shrinking text or page-wide scrolling. */
+@media (max-width: 767px) {
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .project-card,
+  .project-card:not(:first-child) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-block: 30px;
+  }
+  .project-card:nth-child(even) .project-image {
+    order: 0;
+  }
+  .project-content h3 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    overflow-wrap: anywhere;
+  }
+  .learning-goals-intro h2,
+  .contact-copy h2,
+  .section-heading h2 {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+  .learning-goals-list li > div,
+  .about-layout > *,
+  .footer-main > * {
+    min-width: 0;
+  }
+  .education-footer {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+  .menu-close {
+    min-height: 44px;
+  }
+  .mobile-links {
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+  }
+  .mobile-links a {
+    min-height: 48px;
+    font-size: clamp(24px, 5.5dvh, 40px);
+  }
+}
+@media (max-width: 380px) {
+  .header-inner {
+    padding-inline: 14px;
+    gap: 8px;
+  }
+  .header-home {
+    gap: 7px;
+  }
+  .header-wordmark > span {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .menu-toggle,
+  .menu-close {
+    padding-inline: 12px;
+  }
+  .header-menu {
+    padding-inline: 14px;
+  }
+  .learning-goals-list li {
+    gap: 12px;
+  }
+}

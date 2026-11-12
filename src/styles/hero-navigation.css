@@ -245,12 +245,21 @@
   padding: 20px 3.5vw 40px;
   width: 100%;
   max-width: none;
+  height: 100vh;
   height: 100dvh;
   max-height: none;
+  z-index: 100;
+  overscroll-behavior: contain;
   border: 0;
   color: var(--color-ink);
   background: var(--color-blush);
   overflow-y: auto;
+}
+.header-menu:not([open]) {
+  display: none;
+}
+.header-menu[open] {
+  display: block;
 }
 .header-menu::backdrop {
   background: var(--color-blush);
@@ -294,7 +303,8 @@
   font-size: 12px;
   color: var(--color-berry);
 }
-.menu-visible {
+.menu-visible,
+.menu-visible body {
   overflow: hidden;
 }
 @media (any-hover: hover) {
